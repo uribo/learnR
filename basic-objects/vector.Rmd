@@ -2,7 +2,7 @@
 opts_knit$set(base.dir='./', fig.path='', out.format='md')
 opts_chunk$set(prompt=TRUE, comment='', results='markup')
 # See yihui.name/knitr/options for more Knitr options.
-##### Put other setup R code here
+### Put other setup R code here
 
 ```
 
@@ -13,7 +13,7 @@ A vector is a group of primitive objects of the same type. It is one of the buil
 There are several types of vectors in R. They distinct from each other in the type of entries they hold. Here we will see the most commonly used types of vectors including numeric vector, logical vector, character vector, and so on.
 
 
-#### Numeric vector
+## Numeric vector
 
 There are various ways to define a numeric vector.
 
@@ -21,6 +21,18 @@ A scalar number is the simplest numeric vector in R. It's only special in that i
 
 ```{r}
 1.5
+```
+
+If we want to assign this value to a symbol, we can use `<-`.
+
+```{r}
+x <- 1.5
+```
+
+Then the value is assigned to `x` and we can use `x` to represent the value.
+
+```{r}
+x
 ```
 
 We can call `numeric` function to create a zero vector of a specific length.
@@ -59,7 +71,7 @@ Or another start from 3 with length 10.
 seq(3,length.out = 10)
 ```
 
-There are many ways we can define numeric vectors. But we should always be careful when use `:` to define a range of numbers.
+There are many ways we can define numeric vectors, but we should always be careful when we use `:` to define a range of numbers.
 
 ```{r}
 1+1:5
@@ -68,7 +80,7 @@ There are many ways we can define numeric vectors. But we should always be caref
 As we can see, `1+1:5` does not mean a sequence from 2 to 5, but one from 2 to 6. It is because `:` has higher priority than `+`, which makes R evaluates `1:5` first and add 1 to each entry, yielding the sequence you see in the result.
 
 
-#### Logical vector
+## Logical vector
 
 In contrast with numeric vectors, a logical vector typically holds a group of `TRUE` of `FALSE` values. They are basically *yes* or *no* to denote the answers to a group of logical questions.
 
@@ -92,7 +104,7 @@ c(1,2) > 2
 
 R interprets this expression as the element-wise comparisons between the two entries.
 
-Moreover, we can compare two mutlti-entry numeric vectors as long as the length of the longer vector is a multiple of that of the shorter one.
+Moreover, we can compare two multi-entry numeric vectors as long as the length of the longer vector is a multiple of that of the shorter one.
 
 ```{r}
 c(1,2) > c(2,1)
@@ -104,7 +116,15 @@ c(2,3) > c(1,2,-1,3)
 
 The computing mechanism is asking the following questions iteratively: `1>2?`, `2>3?`, `-1>2?`, `3>3?`. In other words, the shorter vector will rotate to finish all the comparisons for each entry in the longer vector.
 
-#### Character vector
+In R, several logical binary operators are defined, such as `==` to denote *equality*, `>` *greater-than*, `>=` *greater-or-equals-to*, `<` *less-than*, `<=` *less-than-or-equals-to*. Moreover, R provides some other additional logical operators like `%in%` to tell whether each entry in the left-hand side vector in contained in the right-hand side vector.
+
+```{r}
+1 %in% c(1,2,3)
+c(1,4) %in% c(1,2,3)
+```
+
+
+## Character vector
 
 A character vector is a group of strings. Here a *character* does not mean literally a single letter or symbol in a language, but means a string. A character vector is a group of a number of strings. Both double-quotes and single-quotes can be used to define a character vector.
 
@@ -128,26 +148,196 @@ We can use `==` to tell whether two vectors have the same values, which applies 
 c("Hello","World") == c('Hello','World')
 ```
 
-The character vectors are equal because `"` and `'` both work.
+The character vectors are equal because `"` and `'` both work to define a string and do not affect its value.
 
 ```{r}
 c("Hello","World") == "Hello, World"
 ```
 
-he previous expression yields both `FALSE` because neither `"Hello"` nor `"World"` equals `"Hello, World"` as a whole.
+The previous expression yields both `FALSE` because neither `"Hello"` nor `"World"` equals `"Hello, World"`.
 
-#### Date vector
+## Subsetting vectors
 
+If we want to access some specific entries or a subset of a vector, we are *subsetting* the vector. Like many other operations, there are many ways to do it.
 
-#### Named vector
+First we create a simple vector `v1`.
 
+```{r}
+v1 <- c(1,2,3,4)
+```
 
-#### Subsetting vectors
+Each of the following lines gets a specific subset of `v1`.
 
-#### Obtaining the type of a vector
+Get the second entry:
 
-#### Converting vectors
+```{r}
+v1[2]
+```
 
-#### Arithmetic operators for numeric/integer vectors
+Get the second to fourth entries:
 
+```{r}
+v1[2:4]
+```
+
+Get all entries except the third one:
+
+```{r}
+v1[-3]
+```
+
+The patterns are clear: we can put any numeric vector inside the square brackets after the vector to extract its corresponding subset.
+
+```{r}
+a <- c(1,3)
+v1[a]
+```
+
+We can also supply a equal-length logical vector to determine whether each entry should be extracted.
+
+```{r}
+v1[c(TRUE,FALSE,TRUE,FALSE)]
+```
+
+More than subsetting, we can overwrite a specific subset of a vector like this:
+
+```{r}
+v1[2] <- 0
+v1[2:4] <- c(0,1,3)
+```
+
+Logical selector also allows overwriting.
+
+```{r}
+v1[c(TRUE,FALSE,TRUE,FALSE)] <- c(3,2)
+```
+
+A useful implication is selecting by logical criterion. For example, this line picks out all entries that are no greater than 2.
+
+```{r}
+v1[v1 <= 2]
+```
+
+This line picks out all entries that satisfy $x^2-x+1 \ge 0$.
+```{r}
+v1[v1^2-v1+1>=0]
+```
+
+If we want to replace all entries that satisfy $x \le 2$ with 0, we can call:
+
+```{r}
+v1[v1 <= 2] <- 0
+```
+
+If we overwrite the vector at a non-existing entry, the vector will automatically expand with unassigned value kept `NA` as missing values.
+
+```{r}
+v1[10] <- 8
+v1
+```
+
+## Named vectors
+
+Named vector is not a specific type of vector parallel with numeric or logical vector. It is a vector with names assigned to its entries.
+
+```{r}
+x <- c(a=1,b=2,c=3)
+x
+```
+
+Then we can access its entries with a single-valued character vector.
+
+```{r}
+x["a"]
+```
+
+Or get multiple entries with a character vector
+
+```{r}
+x[c("a","c")]
+```
+
+In addition, all other operations to vector also perfectly work for named vectors.
+
+We can get the names of a vector with `names` function.
+
+```{r}
+names(x)
+```
+
+Or we can change the names of a vector by assigning another character vector to its names.
+
+```{r}
+names(x) <- c("x","y","z")
+x["z"]
+```
+
+Or we can simply cancel its names by assigning `NULL`.
+
+```{r}
+names(x) <- NULL
+x
+```
+
+## Telling the type of vectors
+
+Sometimes we need to tell the type of a vector before taking an action. `class` function will tell us the type of any R object.
+
+```{r}
+class(c(1,2,3))
+class(c(TRUE,TRUE,FALSE))
+class(c("Hello","World"))
+```
+
+If we need to ensure an object is indeed a specific type of vector, we can use `is.numeric`, `is.logical`, `is.character` and many other similar functions.
+
+```{r}
+is.numeric(c(1,2,3))
+is.numeric(c(TRUE,TRUE,FALSE))
+is.numeric(c("Hello","World"))
+```
+
+## Converting vectors
+
+Different types of vectors can be coerced to a specific type of vector.
+
+```{r}
+as.numeric(c("1","2","3","a"))
+as.logical(c(-1,0,1,2))
+as.character(c(1,2,3))
+as.character(c(TRUE,FALSE))
+```
+
+The conversion follows a set of rules. 
+
+The first line converts the character vector to a numeric vector. The conversion is done except for the last one so a missing value is produced instead. 
+
+As for converting numeric vector to logical vector, the rule is that only 0 corresponds to `FALSE` and all non-zero numbers will produce `TRUE`.
+
+Each kind of vector can be converted to character vector since everything has a character representation. However, if a numeric vector or a logical vector is coerced to character vector, it cannot be directly involved in the arithmetic operations with other numeric or logical vectors unless it is converted back. That is why the following code does not work.
+
+```{r}
+as.character(c(1,2)) + c(2,3)
+```
+
+## Arithmetic operators for numeric vectors
+
+The arithmetic operations of numeric vectors are very simple. They basically follow two rules: Element-wise operation and rotating the shorter vector.
+
+```{r}
+c(1,2,3,4) + 2
+c(1,2,3) - c(2,3,4)
+c(1,2,3) * c(2,3,4)
+c(1,2,3) / c(2,3,4)
+c(1,2,3) ^ 2
+c(1,2,3) ^ c(2,3,4)
+c(1,2,3,14) %% 2
+```
+
+The operations do not function with corresponding names. Only the names of the left-hand side vector will remain.
+
+```{r}
+c(a=1,b=2,c=3) + c(b=2,c=3,d=4)
+c(a=1,b=2,3) + c(b=2,c=3,d=4)
+```
 
