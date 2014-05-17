@@ -3,16 +3,16 @@
 
 # Vector
 
-A vector is a group of primitive objects of the same type. It is one of the building blocks of R objects. 
+A vector is a group of primitive objects of the same type. It is one of the building blocks of all R objects. 
 
 There are several types of vectors in R. They distinct from each other in the type of entries they hold. Here we will see the most commonly used types of vectors including numeric vector, logical vector, character vector, and so on.
 
 
 ## Numeric vector
 
-There are various ways to define a numeric vector.
+There are multiple ways to define a numeric vector.
 
-A scalar number is the simplest numeric vector in R. It's only special in that its length is one.
+A scalar number is the simplest numeric vector. It's special only because its length is one.
 
 
 ```r
@@ -24,7 +24,7 @@ A scalar number is the simplest numeric vector in R. It's only special in that i
 ```
 
 
-If we want to assign this value to a symbol, we can use `<-`.
+To assign this value to a symbol, we can use `<-`.
 
 
 ```r
@@ -32,7 +32,7 @@ If we want to assign this value to a symbol, we can use `<-`.
 ```
 
 
-Then the value is assigned to `x` and we can use `x` to represent the value.
+Then the value is assigned to `x` and we can use `x` to represent the value in later expressions.
 
 
 ```r
@@ -68,7 +68,7 @@ We can also use `c` function to *combine* several vectors to be one vector.
 ```
 
 
-Therefore, we can combine some single-entry vectors with multi-entry vectors to obtain the same vector as we did.
+We can combine several single-entry vectors with a multi-entry vector to obtain the previous vector.
 
 
 ```r
@@ -80,7 +80,7 @@ Therefore, we can combine some single-entry vectors with multi-entry vectors to 
 ```
 
 
-If we want to define a series of consecutive numbers with step one, `:` operator will do the trick.
+To define a series of consecutive numbers with step one, `:` operator will do the trick.
 
 
 ```r
@@ -92,7 +92,7 @@ If we want to define a series of consecutive numbers with step one, `:` operator
 ```
 
 
-Or we can use `seq` function to produce a vector of a specific sequence, for example, one from 1 to 10 with step 2.
+A more general way is to use `seq` function to produce a vector of a specific sequence like, for example, one from 1 to 10 with step 2.
 
 
 ```r
@@ -104,7 +104,7 @@ Or we can use `seq` function to produce a vector of a specific sequence, for exa
 ```
 
 
-Or another start from 3 with length 10.
+Or another vector that starts from 3 with length 10.
 
 
 ```r
@@ -128,12 +128,11 @@ There are many ways we can define numeric vectors, but we should always be caref
 ```
 
 
-As we can see, `1+1:5` does not mean a sequence from 2 to 5, but one from 2 to 6. It is because `:` has higher priority than `+`, which makes R evaluates `1:5` first and add 1 to each entry, yielding the sequence you see in the result.
-
+As the result shows, `1+1:5` does not mean a sequence from 2 to 5, but from 2 to 6. It is because `:` has higher priority than `+`, which results in evaluating `1:5` first and adding 1 to each entry, yielding the sequence you see in the result.
 
 ## Logical vector
 
-In contrast with numeric vectors, a logical vector typically holds a group of `TRUE` of `FALSE` values. They are basically *yes* or *no* to denote the answers to a group of logical questions.
+In contrast with numeric vectors, a logical vector typically holds a group of `TRUE` or `FALSE` values. They are basically *yes* or *no* to denote the answers to a group of logical questions.
 
 The simplest logical vector is `TRUE` or `FALSE` itself.
 
@@ -147,7 +146,7 @@ The simplest logical vector is `TRUE` or `FALSE` itself.
 ```
 
 
-A more usual way to to obtain a logical vector is to ask logical questions. For example, we can ask R whether 1 is greater than 2.
+A more usual way to obtain a logical vector is to ask logical questions about R objects. For example, we can ask R whether 1 is greater than 2.
 
 
 ```r
@@ -197,7 +196,7 @@ Moreover, we can compare two multi-entry numeric vectors as long as the length o
 
 The computing mechanism is asking the following questions iteratively: `1>2?`, `2>3?`, `-1>2?`, `3>3?`. In other words, the shorter vector will rotate to finish all the comparisons for each entry in the longer vector.
 
-In R, several logical binary operators are defined, such as `==` to denote *equality*, `>` *greater-than*, `>=` *greater-or-equals-to*, `<` *less-than*, `<=` *less-than-or-equals-to*. Moreover, R provides some other additional logical operators like `%in%` to tell whether each entry in the left-hand side vector in contained in the right-hand side vector.
+In R, several logical binary operators are defined, such as `==` to denote *equality*, `>` *greater-than*, `>=` *greater-or-equals-to*, `<` *less-than*, `<=` *less-than-or-equals-to*. Moreover, R provides some other additional logical operators like `%in%` to tell whether each entry in the left-hand side vector is contained by the right-hand side vector.
 
 
 ```r
@@ -220,7 +219,9 @@ In R, several logical binary operators are defined, such as `==` to denote *equa
 
 ## Character vector
 
-A character vector is a group of strings. Here a *character* does not mean literally a single letter or symbol in a language, but means a string. A character vector is a group of a number of strings. Both double-quotes and single-quotes can be used to define a character vector.
+A character vector is a group of strings. Here a *character* does not mean literally a single letter or symbol in a language, but means a string like "*this is a string*".
+
+A character vector is a group of strings. Both double-quotation mark and single-quotation mark can be used to define a character vector.
 
 
 ```r
@@ -372,7 +373,7 @@ Logical selector also allows overwriting.
 ```
 
 
-A useful implication is selecting by logical criterion. For example, this line picks out all entries that are no greater than 2.
+A useful implication of this operation is selecting entries by logical criterion. For example, this line picks out all entries that are no greater than 2.
 
 
 ```r
@@ -386,6 +387,7 @@ A useful implication is selecting by logical criterion. For example, this line p
 
 This line picks out all entries that satisfy $x^2-x+1 \ge 0$.
 
+
 ```r
 > v1[v1^2 - v1 + 1 >= 0]
 ```
@@ -395,7 +397,7 @@ This line picks out all entries that satisfy $x^2-x+1 \ge 0$.
 ```
 
 
-If we want to replace all entries that satisfy $x \le 2$ with 0, we can call:
+To replace all entries that satisfy $x \le 2$ with 0, we can call:
 
 
 ```r

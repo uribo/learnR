@@ -8,4 +8,6 @@ This book contains both introductory and advanced materials. You may choose wher
 
 R is a powerful programming language and an environment for statistical computing, dataset exploration, analysis, and visualization. It is free, open-source and has a strong, rapidly growing community where users and developers share experience and actively contribute to the development of more than 5000 packages. 
 
-*(This is book is still in its early stage, and the contents are not yet settled.)*
+*(This book is still in its early stage, and the contents are not yet settled.)*
+
+*(Contributors: Kun Ren)*
