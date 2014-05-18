@@ -8,4 +8,26 @@ opts_chunk$set(prompt=TRUE, comment='', results='markup')
 
 # Math functions
 
-Math functions
+```{r}
+sin(1)
+cos(1)
+tan(1)
+exp(-1)
+sinh(1)
+cosh(1)
+tanh(1)
+factorial(5)
+ceiling(10.6)
+floor(9.5)
+trunc(1.5)
+round(pi,3)
+signif(pi,3)
+
+polyroot(c(1,2,1,-1))
+f <- deriv(y~sin(cos(x)*y),c("x","y"),func=T)
+f(1,2)
+
+l <- uniroot(function(x) x^3-x+1,c(-5,5))
+l
+```
+

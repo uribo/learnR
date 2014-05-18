@@ -8,4 +8,89 @@ opts_chunk$set(prompt=TRUE, comment='', results='markup')
 
 # Assignment
 
-assignment
+
+```{r}
+x1 <- 1
+2 -> x2
+x3 <<- 3
+4 ->> x4
+x5 = 5
+x6 <- x7 = 8
+```
+
+## Local evaluation
+
+```{r}
+local({
+  x1 <- 1
+  x1+1
+})
+
+local({
+  x1 <<- 1
+  x1+1
+})
+```
+
+## Scoping
+
+```{r}
+local({
+  message(x)
+  x <- 5
+  message(x)
+})
+message(x)
+
+
+x <- 10
+local({
+  message(x)
+  x <- 5
+  local({
+    message(x)
+    x <- 3
+    message(x)
+  })
+  message(x)
+})
+message(x)
+
+
+x <- 10
+local({
+  message(x)
+  x <<- 5
+  local({
+    x <<- 3
+    message(objects())
+    message(x)
+  })
+  message(objects())
+  message(x)
+})
+objects()
+message(x)
+```
+
+## Invisible return value
+
+```{r}
+f <- function(x,y) {
+  invisible(x+y)
+}
+
+f(1,2)
+m <- f(1,2)
+m1 <- m2 <- f(1,2)
+```
+
+## Quotation
+
+```{r}
+`+a` <- c(1,2,3)
+`-a` <- function(a,d) { a-d }
+l1 <- list(`a+-`=rnorm(10),`a-+`=rnorm(10))
+data.frame(`a-+`=rnorm(10),`a+-`=rnorm(10))
+```
+

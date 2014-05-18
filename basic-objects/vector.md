@@ -3,7 +3,7 @@
 
 # Vector
 
-A vector is a group of primitive objects of the same type. It is one of the building blocks of all R objects. 
+A vector is a group of primitive values of the same type. It can be a group of numbers, trues or falses, texts, and so on.  It is one of the building blocks of all R objects. 
 
 There are several types of vectors in R. They distinct from each other in the type of entries they hold. Here we will see the most commonly used types of vectors including numeric vector, logical vector, character vector, and so on.
 

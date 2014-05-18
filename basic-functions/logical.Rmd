@@ -8,4 +8,21 @@ opts_chunk$set(prompt=TRUE, comment='', results='markup')
 
 # Logical function
 
-Logical function
+
+```{r}
+a1 <- c(TRUE, TRUE, FALSE)
+a2 <- c(TRUE, FALSE, FALSE)
+a1 & a2
+a1 | a2
+!a1
+
+x <- c(-2,-3,2,3,1,0,0,1,2)
+any(x > 1)
+all(x <= 1)
+
+which(x >= 1.5)
+x[x>=1.5]
+
+x <- 1 %in% c(1,2,3)
+```
+

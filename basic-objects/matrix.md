@@ -3,6 +3,8 @@
 
 # Matrix
 
+A matrix is a vector represented in two dimensions. 
+
 ## Defining a matrix
 
 Create matrix from a vector.
