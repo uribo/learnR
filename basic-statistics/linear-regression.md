@@ -1,6 +1,5 @@
 
 
-
 # Linear regression
 
 Linear regression

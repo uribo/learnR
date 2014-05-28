@@ -1,6 +1,5 @@
 
 
-
 # Computing time
 
 computing time

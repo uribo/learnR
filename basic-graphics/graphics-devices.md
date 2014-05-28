@@ -1,6 +1,5 @@
 
 
-
 # Graphics devices
 
 example

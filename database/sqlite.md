@@ -1,6 +1,5 @@
 
 
-
 # SQLite
 
 example

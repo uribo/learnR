@@ -1,6 +1,5 @@
 
 
-
 # Rcpp
 
 example

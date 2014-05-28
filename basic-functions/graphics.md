@@ -1,6 +1,5 @@
 
 
-
 # Graphics functions
 
 Graphics functions

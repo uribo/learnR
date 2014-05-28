@@ -1,6 +1,5 @@
 
 
-
 # Object functions
 
 ## Typing
@@ -32,8 +31,7 @@
 ```
 
 ```r
-> 
-> x <- c(1, 2, 3)
+> x <- c(1,2,3)
 > class(x)
 ```
 
@@ -58,8 +56,7 @@
 ```
 
 ```r
-> 
-> x <- c("a", "b")
+> x <- c("a","b")
 > class(x)
 ```
 
@@ -84,8 +81,7 @@
 ```
 
 ```r
-> 
-> x <- list(a = 1, b = 2)
+> x <- list(a=1,b=2)
 > class(x)
 ```
 
@@ -112,8 +108,7 @@ List of 2
 ```
 
 ```r
-> 
-> x <- data.frame(a = 1, b = 2)
+> x <- data.frame(a=1,b=2)
 > class(x)
 ```
 
@@ -139,14 +134,13 @@ List of 2
  $ b: num 2
 ```
 
-
 ## Object dimensions
 
 
 ```r
-> df <- data.frame(a = c(1, 2, 3), b = c(2, 3, 4))
-> m1 <- matrix(c(1, 2, 3, 2, 3, 4, 3, 4, 5), ncol = 3)
-> a1 <- array(1:48, dim = c(2, 8, 3))
+> df <- data.frame(a=c(1,2,3),b=c(2,3,4))
+> m1 <- matrix(c(1,2,3,2,3,4,3,4,5),ncol = 3)
+> a1 <- array(1:48,dim = c(2,8,3))
 > dim(df)
 ```
 
@@ -217,5 +211,4 @@ List of 2
 ```
 [1] 2
 ```
-
 

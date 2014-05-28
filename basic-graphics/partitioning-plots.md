@@ -1,6 +1,5 @@
 
 
-
 # Partitioning plots
 
 example

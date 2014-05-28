@@ -1,6 +1,5 @@
 
 
-
 # Math functions
 
 
@@ -93,7 +92,7 @@
 ```
 
 ```r
-> round(pi, 3)
+> round(pi,3)
 ```
 
 ```
@@ -101,7 +100,7 @@
 ```
 
 ```r
-> signif(pi, 3)
+> signif(pi,3)
 ```
 
 ```
@@ -109,8 +108,7 @@
 ```
 
 ```r
-> 
-> polyroot(c(1, 2, 1, -1))
+> polyroot(c(1,2,1,-1))
 ```
 
 ```
@@ -118,8 +116,8 @@
 ```
 
 ```r
-> f <- deriv(y ~ sin(cos(x) * y), c("x", "y"), func = T)
-> f(1, 2)
+> f <- deriv(y~sin(cos(x)*y),c("x","y"),func=T)
+> f(1,2)
 ```
 
 ```
@@ -130,8 +128,7 @@ attr(,"gradient")
 ```
 
 ```r
-> 
-> l <- uniroot(function(x) x^3 - x + 1, c(-5, 5))
+> l <- uniroot(function(x) x^3-x+1,c(-5,5))
 > l
 ```
 
@@ -151,5 +148,4 @@ $init.it
 $estim.prec
 [1] 6.104e-05
 ```
-
 

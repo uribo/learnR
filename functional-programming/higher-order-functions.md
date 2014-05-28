@@ -1,6 +1,5 @@
 
 
-
 # Higher-order functions
 
 example

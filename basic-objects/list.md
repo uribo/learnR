@@ -1,13 +1,12 @@
 
 
-
 # List
 
 ## Defining list
 
 
 ```r
-> l1 <- list(a = 1, b = 2, c = 3)
+> l1 <- list(a=1,b=2,c=3)
 > l1$a
 ```
 
@@ -33,7 +32,7 @@ $a
 ```
 
 ```r
-> l1[c("a", "b")]
+> l1[c("a","b")]
 ```
 
 ```
@@ -45,10 +44,10 @@ $b
 ```
 
 ```r
-> names(l1) <- c("A", "B", "C")
+> names(l1) <- c("A","B","C")
 > l1$d <- 4
 > 
-> l2 <- list(a = c(1, 2, 3), b = c("x", "y", "z", "w"))
+> l2 <- list(a=c(1,2,3),b=c("x","y","z","w"))
 > l2$b
 ```
 
@@ -57,7 +56,6 @@ $b
 ```
 
 ```r
-> 
 > is.list(l1)
 ```
 
@@ -66,7 +64,7 @@ $b
 ```
 
 ```r
-> as.list(c(1, 2, 3))
+> as.list(c(1,2,3))
 ```
 
 ```
@@ -81,8 +79,7 @@ $b
 ```
 
 ```r
-> 
-> l3 <- as.list(c(a = 1, b = 2, c = 3))
+> l3 <- as.list(c(a=1,b=2,c=3))
 > l3$d
 ```
 
@@ -91,7 +88,7 @@ NULL
 ```
 
 ```r
-> l3$d <- c("hello", "world")
+> l3$d <- c("hello","world")
 > l3
 ```
 
@@ -110,11 +107,9 @@ $d
 ```
 
 ```r
-> 
-> l4 <- list(a = 1, b = 2, c = 3)
+> l4 <- list(a=1,b=2,c=3)
 > c4 <- unlist(l4)
-> l4 <- list(a = 1, b = 2, c = "hello")
+> l4 <- list(a=1,b=2,c="hello")
 > c4 <- unlist(l4)
 ```
-
 

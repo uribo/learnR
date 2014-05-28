@@ -1,6 +1,5 @@
 
 
-
 # Interactive graphics
 
 example

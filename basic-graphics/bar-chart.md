@@ -1,6 +1,5 @@
 
 
-
 # Bar chart
 
 example

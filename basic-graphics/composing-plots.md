@@ -1,6 +1,5 @@
 
 
-
 # Composing plots
 
 example

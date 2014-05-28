@@ -1,6 +1,5 @@
 
 
-
 # Environment functions
 
 
@@ -15,7 +14,6 @@
 ```
 
 ```r
-> 
 > x <- 1
 > y <- 1
 > 
@@ -31,7 +29,7 @@
 ```r
 > remove(x)
 > rm(y)
-> rm(list = objects())
+> rm(list=objects())
 > 
 > getwd()
 ```
@@ -41,7 +39,7 @@
 ```
 
 ```r
-> # setwd('d:/')
+> # setwd("d:/")
 > 
 > getOption("digits")
 ```
@@ -51,7 +49,7 @@
 ```
 
 ```r
-> 1e+10 + 0.5
+> 1e10 + 0.5
 ```
 
 ```
@@ -59,12 +57,11 @@
 ```
 
 ```r
-> options(digits = 15)
-> 1e+10 + 0.5
+> options(digits=15)
+> 1e10 + 0.5
 ```
 
 ```
 [1] 10000000000.5
 ```
-
 

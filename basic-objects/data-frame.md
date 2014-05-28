@@ -1,13 +1,12 @@
 
 
-
 # Data frame
 
 ## Defining data frame
 
 
 ```r
-> data.frame(id = 1:5, x = c(0, 2, 1, -1, -3), y = c(0.5, 0.2, 0.1, 0.5, 0.9))
+> data.frame(id=1:5,x=c(0,2,1,-1,-3),y=c(0.5,0.2,0.1,0.5,0.9))
 ```
 
 ```
@@ -20,7 +19,7 @@
 ```
 
 ```r
-> data.frame(id = 1:10, x = runif(10), y = rnorm(10))
+> data.frame(id=1:10,x=runif(10),y=rnorm(10))
 ```
 
 ```
@@ -38,7 +37,7 @@
 ```
 
 ```r
-> data.frame(id = 1:5, name = c("A", "A", "B", "B", "C"), x = runif(5), y = rnorm(5))
+> data.frame(id=1:5,name=c("A","A","B","B","C"),x=runif(5),y=rnorm(5))
 ```
 
 ```
@@ -51,8 +50,7 @@
 ```
 
 ```r
-> data.frame(id = 1:5, name = c("A", "A", "B", "B", "C"), x = runif(5), y = rnorm(5), 
-+     stringsAsFactor = FALSE)
+> data.frame(id=1:5,name=c("A","A","B","B","C"),x=runif(5),y=rnorm(5),stringsAsFactor=FALSE)
 ```
 
 ```
@@ -65,12 +63,11 @@
 ```
 
 ```r
-> 
-> df1 <- data.frame(1:5, c("A", "A", "B", "B", "C"), rnorm(5))
-> colnames(df1) <- c("id", "name", "x")
+> df1 <- data.frame(1:5,c("A","A","B","B","C"),rnorm(5))
+> colnames(df1) <- c("id","name","x")
 > rownames(df1) <- letters[1:5]
 > 
-> as.data.frame(matrix(c(1, 2, 3, 4, 5, 6, 7, 8, 9), nrow = 3, byrow = FALSE))
+> as.data.frame(matrix(c(1,2,3,4,5,6,7,8,9),nrow=3,byrow=FALSE))
 ```
 
 ```
@@ -79,7 +76,6 @@
 2  2  5  8
 3  3  6  9
 ```
-
 
 
 ## Subsetting data frame
@@ -120,7 +116,7 @@ e    C
 ```
 
 ```r
-> df1[c("id", "name")]
+> df1[c("id","name")]
 ```
 
 ```
@@ -146,7 +142,7 @@ e  5    C
 ```
 
 ```r
-> df1[, "name"]
+> df1[,"name"]
 ```
 
 ```
@@ -155,7 +151,7 @@ Levels: A B C
 ```
 
 ```r
-> df1[, c("name", "x")]
+> df1[,c("name","x")]
 ```
 
 ```
@@ -168,7 +164,7 @@ e    C  1.0667
 ```
 
 ```r
-> df1[, 1:2]
+> df1[,1:2]
 ```
 
 ```
@@ -181,7 +177,7 @@ e  5    C
 ```
 
 ```r
-> df1[1:4, ]
+> df1[1:4,]
 ```
 
 ```
@@ -193,7 +189,7 @@ d  4    B  0.3980
 ```
 
 ```r
-> df1[1:4, "x"]
+> df1[1:4,"x"]
 ```
 
 ```
@@ -201,7 +197,7 @@ d  4    B  0.3980
 ```
 
 ```r
-> df1[1:4, c("id", "x")]
+> df1[1:4,c("id","x")]
 ```
 
 ```
@@ -213,7 +209,7 @@ d  4  0.3980
 ```
 
 ```r
-> df1[df1$x >= 0, ]
+> df1[df1$x>=0,]
 ```
 
 ```
@@ -225,7 +221,7 @@ e  5    C 1.067
 ```
 
 ```r
-> df1[df1$name == "A", ]
+> df1[df1$name=="A",]
 ```
 
 ```
@@ -233,5 +229,4 @@ e  5    C 1.067
 a  1    A -0.1287
 b  2    A  1.0965
 ```
-
 

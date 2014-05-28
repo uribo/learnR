@@ -1,6 +1,5 @@
 
 
-
 # Character functions
 
 
@@ -47,8 +46,7 @@ A tab
 ```
 
 ```r
-> sprintf("Hello, %s! Your number is %d., and your score is %.2f", "Jack", 50, 
-+     35.618)
+> sprintf("Hello, %s! Your number is %d., and your score is %.2f","Jack",50,35.618)
 ```
 
 ```
@@ -56,7 +54,7 @@ A tab
 ```
 
 ```r
-> paste("Hello", "world")
+> paste("Hello","world")
 ```
 
 ```
@@ -64,7 +62,7 @@ A tab
 ```
 
 ```r
-> paste("Hello", "world", sep = "-")
+> paste("Hello","world",sep="-")
 ```
 
 ```
@@ -72,7 +70,7 @@ A tab
 ```
 
 ```r
-> paste0("Hello", "world")
+> paste0("Hello","world")
 ```
 
 ```
@@ -105,7 +103,7 @@ A tab
 
 ```r
 > ch1 <- "Hello"
-> substr(ch1, 1, 3)
+> substr(ch1,1,3)
 ```
 
 ```
@@ -113,8 +111,8 @@ A tab
 ```
 
 ```r
-> substr(ch1, 1, 3) <- "abc"
-> strsplit("a,bb,ccc", split = ",")
+> substr(ch1,1,3) <- "abc"
+> strsplit("a,bb,ccc",split = ",")
 ```
 
 ```
@@ -123,7 +121,7 @@ A tab
 ```
 
 ```r
-> strsplit(c("Ken,24,Finance", "James,25,Economics"), split = ",")
+> strsplit(c("Ken,24,Finance","James,25,Economics"),split = ",")
 ```
 
 ```
@@ -133,4 +131,3 @@ A tab
 [[2]]
 [1] "James"     "25"        "Economics"
 ```
-

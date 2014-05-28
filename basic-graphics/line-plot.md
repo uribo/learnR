@@ -1,6 +1,5 @@
 
 
-
 # Line plot
 
 example

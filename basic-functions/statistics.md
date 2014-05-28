@@ -1,6 +1,5 @@
 
 
-
 # Statistical functions
 
 
@@ -10,7 +9,7 @@
 ```
 
 ```
-[1] -0.2301
+[1] -0.3602
 ```
 
 ```r
@@ -18,7 +17,7 @@
 ```
 
 ```
-[1] 0.8164
+[1] 1.15
 ```
 
 ```r
@@ -26,16 +25,16 @@
 ```
 
 ```
-[1] -0.2491
+[1] -0.3311
 ```
 
 ```r
-> quantile(x.norm, probs = c(0.5, 0.8))
+> quantile(x.norm,probs = c(0.5,0.8))
 ```
 
 ```
     50%     80% 
--0.2491  0.6236 
+-0.3311  0.7319 
 ```
 
 ```r
@@ -43,7 +42,7 @@
 ```
 
 ```
-[1] 1.118
+[1] 1.278
 ```
 
 ```r
@@ -51,11 +50,11 @@
 ```
 
 ```
-[1] -1.767
+[1] -2.427
 ```
 
 ```r
-> pmax(c(1, 2, 3), c(2, 3, 1))
+> pmax(c(1,2,3),c(2,3,1))
 ```
 
 ```
@@ -63,7 +62,7 @@
 ```
 
 ```r
-> pmin(c(1, 2, 3), c(2, 3, 1), c(3, 2, 1))
+> pmin(c(1,2,3),c(2,3,1),c(3,2,1))
 ```
 
 ```
@@ -76,14 +75,12 @@
 
 ```
    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
- -1.770  -0.880  -0.249  -0.230   0.584   1.120 
+ -2.430  -1.260  -0.331  -0.360   0.615   1.280 
 ```
 
 ```r
-> 
-> 
 > set.seed(100)
-> sample(c(1, 2, 3), size = 2, replace = FALSE)
+> sample(c(1,2,3),size = 2,replace = FALSE)
 ```
 
 ```
@@ -91,7 +88,7 @@
 ```
 
 ```r
-> sample(c("a", "b", "z"), size = 10, replace = TRUE)
+> sample(c("a","b","z"),size = 10, replace = TRUE)
 ```
 
 ```
@@ -99,7 +96,7 @@
 ```
 
 ```r
-> rnorm(20, mean = 10, sd = 2)
+> rnorm(20,mean = 10,sd = 2)
 ```
 
 ```
@@ -108,7 +105,7 @@
 ```
 
 ```r
-> rbinom(20, size = 10, prob = 0.6)
+> rbinom(20,size = 10,prob = 0.6)
 ```
 
 ```
@@ -126,7 +123,7 @@
 ```
 
 ```r
-> runif(20, min = 10, max = 20)
+> runif(20,min = 10,max = 20)
 ```
 
 ```
@@ -135,7 +132,7 @@
 ```
 
 ```r
-> rgamma(20, shape = 0.5)
+> rgamma(20,shape = 0.5)
 ```
 
 ```
@@ -145,20 +142,19 @@
 ```
 
 ```r
-> 
-> plot(dnorm, xlim = c(-3, 3))
+> plot(dnorm,xlim=c(-3,3))
 ```
 
 ![plot of chunk unnamed-chunk-1](figure/unnamed-chunk-11.png) 
 
 ```r
-> plot(pnorm, xlim = c(-3, 3))
+> plot(pnorm,xlim=c(-3,3))
 ```
 
 ![plot of chunk unnamed-chunk-1](figure/unnamed-chunk-12.png) 
 
 ```r
-> qnorm(c(0.01, 0.99))
+> qnorm(c(0.01,0.99))
 ```
 
 ```
@@ -166,8 +162,7 @@
 ```
 
 ```r
-> 
-> table(sample(letters[1:3], 100, T))
+> table(sample(letters[1:3],100,T))
 ```
 
 ```
@@ -177,7 +172,7 @@
 ```
 
 ```r
-> table(sample(letters[1:3], 100, T), sample(LETTERS[1:4], 100, T))
+> table(sample(letters[1:3],100,T),sample(LETTERS[1:4],100,T))
 ```
 
 ```
@@ -187,5 +182,4 @@
   b 10 15  9 12
   c  5 11  7  4
 ```
-
 

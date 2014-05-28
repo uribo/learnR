@@ -1,6 +1,5 @@
 
 
-
 # Matrix
 
 A matrix is a vector represented in two dimensions. 
@@ -11,7 +10,7 @@ Create matrix from a vector.
 
 
 ```r
-> matrix(c(1, 2, 3, 2, 3, 4, 3, 4, 5), ncol = 3)
+> matrix(c(1,2,3,2,3,4,3,4,5),ncol = 3)
 ```
 
 ```
@@ -22,8 +21,9 @@ Create matrix from a vector.
 ```
 
 ```r
-> 
-> matrix(c(1, 2, 3, 4, 5, 6, 7, 8, 9), nrow = 3, byrow = FALSE)
+> matrix(c(1,2,3,
++          4,5,6,
++          7,8,9),nrow=3,byrow=FALSE)
 ```
 
 ```
@@ -34,8 +34,9 @@ Create matrix from a vector.
 ```
 
 ```r
-> 
-> matrix(c(1, 2, 3, 4, 5, 6, 7, 8, 9), nrow = 3, byrow = TRUE)
+> matrix(c(1,2,3,
++          4,5,6,
++          7,8,9),nrow=3,byrow=TRUE)
 ```
 
 ```
@@ -45,12 +46,11 @@ Create matrix from a vector.
 [3,]    7    8    9
 ```
 
-
 Create a diagonal matrix.
 
 
 ```r
-> diag(1, nrow = 5)
+> diag(1,nrow=5)
 ```
 
 ```
@@ -63,13 +63,12 @@ Create a diagonal matrix.
 ```
 
 
-
 ## Naming rows and columns
 
 
 ```r
-> matrix(c(1, 2, 3, 4, 5, 6, 7, 8, 9), nrow = 3, byrow = TRUE, dimnames = list(c("r1", 
-+     "r2", "r3"), c("c1", "c2", "c3")))
+> matrix(c(1,2,3,4,5,6,7,8,9),nrow=3,byrow=TRUE,
++   dimnames=list(c("r1","r2","r3"),c("c1","c2","c3")))
 ```
 
 ```
@@ -80,19 +79,17 @@ r3  7  8  9
 ```
 
 
-
 ```r
-> m1 <- matrix(c(1, 2, 3, 2, 3, 4, 3, 4, 5), ncol = 3)
-> rownames(m1) <- c("r1", "r2", "r3")
-> colnames(m1) <- c("c1", "c2", "c3")
+> m1 <- matrix(c(1,2,3,2,3,4,3,4,5),ncol = 3)
+> rownames(m1) <- c("r1","r2","r3")
+> colnames(m1) <- c("c1","c2","c3")
 ```
-
 
 ## Subsetting matrix
 
 
 ```r
-> m1[1, ]
+> m1[1,]
 ```
 
 ```
@@ -101,7 +98,7 @@ c1 c2 c3
 ```
 
 ```r
-> m1[, 2]
+> m1[,2]
 ```
 
 ```
@@ -110,7 +107,7 @@ r1 r2 r3
 ```
 
 ```r
-> m1[1, 1]
+> m1[1,1]
 ```
 
 ```
@@ -118,7 +115,7 @@ r1 r2 r3
 ```
 
 ```r
-> m1[1:2, ]
+> m1[1:2,]
 ```
 
 ```
@@ -128,7 +125,7 @@ r2  2  3  4
 ```
 
 ```r
-> m1[, 2:3]
+> m1[,2:3]
 ```
 
 ```
@@ -139,7 +136,7 @@ r3  4  5
 ```
 
 ```r
-> m1[1:2, 2:3]
+> m1[1:2,2:3]
 ```
 
 ```
@@ -149,7 +146,7 @@ r2  3  4
 ```
 
 ```r
-> m1[-1, ]
+> m1[-1,]
 ```
 
 ```
@@ -159,7 +156,7 @@ r3  3  4  5
 ```
 
 ```r
-> m1[, -2]
+> m1[,-2]
 ```
 
 ```
@@ -194,7 +191,7 @@ r3  3  5
 ```
 
 ```r
-> m1[c("r1", "r3"), c("c1", "c3")]
+> m1[c("r1","r3"),c("c1","c3")]
 ```
 
 ```
@@ -202,7 +199,6 @@ r3  3  5
 r1  1  3
 r3  3  5
 ```
-
 
 ## Operators for matrices
 
@@ -219,7 +215,7 @@ r3  6  8 10
 ```
 
 ```r
-> m1 - 2 * m1
+> m1 - 2*m1
 ```
 
 ```
@@ -241,7 +237,7 @@ r3  9 16 25
 ```
 
 ```r
-> m1/m1
+> m1 / m1
 ```
 
 ```
@@ -283,5 +279,4 @@ c1  1  2  3
 c2  2  3  4
 c3  3  4  5
 ```
-
 

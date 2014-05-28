@@ -1,6 +1,5 @@
 
 
-
 # Formula
 
 
@@ -8,7 +7,7 @@
 ```r
 > data(LifeCycleSavings)
 > 
-> lm(sr ~ pop15 + pop75 + dpi + ddpi, data = LifeCycleSavings)
+> lm(sr~pop15+pop75+dpi+ddpi,data=LifeCycleSavings)
 ```
 
 ```
@@ -22,7 +21,7 @@ Coefficients:
 ```
 
 ```r
-> lm(sr ~ 1 + pop15 + pop75 + dpi + ddpi, data = LifeCycleSavings)
+> lm(sr~1+pop15+pop75+dpi+ddpi,data=LifeCycleSavings)
 ```
 
 ```
@@ -36,7 +35,7 @@ Coefficients:
 ```
 
 ```r
-> lm(sr ~ pop15 + pop75 + dpi + ddpi - 1, data = LifeCycleSavings)
+> lm(sr~pop15+pop75+dpi+ddpi-1,data=LifeCycleSavings)
 ```
 
 ```
@@ -50,7 +49,7 @@ Coefficients:
 ```
 
 ```r
-> lm(sr ~ ., data = LifeCycleSavings)
+> lm(sr~.,data=LifeCycleSavings)
 ```
 
 ```
@@ -64,7 +63,7 @@ Coefficients:
 ```
 
 ```r
-> lm(sr ~ . - ddpi, data = LifeCycleSavings)
+> lm(sr~.-ddpi,data=LifeCycleSavings)
 ```
 
 ```
@@ -78,8 +77,7 @@ Coefficients:
 ```
 
 ```r
-> 
-> lm(log(sr) ~ log(pop15) + log(pop75) + log(dpi) + ddpi, data = LifeCycleSavings)
+> lm(log(sr)~log(pop15)+log(pop75)+log(dpi)+ddpi,data=LifeCycleSavings)
 ```
 
 ```
@@ -94,7 +92,7 @@ Coefficients:
 ```
 
 ```r
-> lm(sr ~ pop15 + I(pop15^2) + pop75 + I(pop75^2) + dpi + ddpi, data = LifeCycleSavings)
+> lm(sr~pop15+I(pop15^2)+pop75+I(pop75^2)+dpi+ddpi,data=LifeCycleSavings)
 ```
 
 ```
@@ -111,9 +109,7 @@ Coefficients:
 ```
 
 ```r
-> 
-> plot(sr ~ ddpi, data = LifeCycleSavings)
+> plot(sr~ddpi,data=LifeCycleSavings)
 ```
 
 ![plot of chunk formula](figure/formula.png) 
-

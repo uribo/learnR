@@ -1,6 +1,5 @@
 
 
-
 # Anonymous functions
 
 example
