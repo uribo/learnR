@@ -1,3 +1,2 @@
 library(Rgitbook)
-buildRmd()
-buildGitbook()
+buildGitbook(buildRmd = T)
