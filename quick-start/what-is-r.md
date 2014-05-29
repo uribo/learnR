@@ -5,10 +5,9 @@
 
 R is a powerful programming language and an environment for statistical computing, dataset exploration, analysis, and visualization. It is free, open-source and has a strong, rapidly growing community where users and developers share experience and actively contribute to the development of more than 5000 packages. 
 
-Although R programming language dates back to 1993, its general adoption in data science research and industry has grown rapidly in the last few years, and several surveys shows that R is ranked as the number-one data science language.
+Although R programming language dates back to 1993, its general adoption in data science research and industry has grown rapidly in the last few years, and several surveys show that R is ranked as the number-one data science language.
 
-
-In general, we don't only treat R as a programming language, but also as a comprehensive computing environment, a strong and active community, and a rapidly growing and expanding ecosystem.
+In general, R should not be treated only as a programming language, but also as a comprehensive computing environment, a strong and active community, and a rapidly growing and expanding ecosystem.
 
 #### Programming language
 
