@@ -1,4 +1,3 @@
 library(Rgitbook)
-buildRmd(clean = T)
+buildRmd()
 buildGitbook()
-
