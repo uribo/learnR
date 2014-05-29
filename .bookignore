@@ -4,6 +4,7 @@
 log/
 *.R
 *.Rproj
+*.Rprofile
 .rmdbuild
 docs/
 local/
