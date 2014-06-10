@@ -8,9 +8,10 @@
 ```
 
 ```
-[1] ".GlobalEnv"        "package:Rgitbook"  "package:stats"    
-[4] "package:graphics"  "package:grDevices" "package:utils"    
-[7] "package:datasets"  "Autoloads"         "package:base"     
+ [1] ".GlobalEnv"        "tools:rstudio"     "package:stats"    
+ [4] "package:graphics"  "package:grDevices" "package:utils"    
+ [7] "package:datasets"  "package:Rgitbook"  "package:methods"  
+[10] "Autoloads"         "package:base"     
 ```
 
 ```r
@@ -35,7 +36,7 @@
 ```
 
 ```
-[1] "D:/Workspaces/learnR/basic-functions"
+[1] "C:/Users/Kun/Documents/Workspaces/learnR/basic-functions"
 ```
 
 ```r

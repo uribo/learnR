@@ -29,8 +29,9 @@ If you need to use a package but also want to see how it works, to report what m
 
 #### Ecosystem
 
-R, as an ecosystem, is rapidly growing and expanding in all data-related areas other than IT industry. The majority of its users are not professional developers but data analysts, statisticians, econometricians. These users may not write the best-quality code, but they may contribute the cutting-edge tools to the ecosystem in R language, and all others can have free access to these tools without reinventing the wheels.
+R, as an ecosystem, is rapidly growing and expanding in all data-related areas beyond IT industry. The majority of its users are not professional developers but data analysts, statisticians, econometricians. These users may not write the best-quality code, but they may contribute the cutting-edge tools to the ecosystem in R language, and all others have free 
+access to these tools without reinventing the wheels.
 
 For example, once a econometrician writes a package that includes a new method she found to detect a category of time series pattern, it may attract several users who find it interesting and useful. Then some professional users may improve the original code to make it faster and more general-purpose. A while later, some quantitative investor may find it helpful to incorporate this method into her trading strategy because it can detect patterns that usually causes risks in her portfolio. At the end of the day, the econometrician finds her tools applied in real-world industry, and the investor finds her portfolio less risky.
 
-That is how the ecosystem works. And that is one of the reasons why R rocks in these areas: it has the ability to quickly turn the cutting-edge knowledge outside IT industry (usually data science academia and industry) to generally available and applicable tools in the ecosystem. In other words, it has the ability to massively convert non-IT knowledge to productivity.
+That is how the ecosystem works. And that is one of the reasons why R rocks in these areas: it has the ability to quickly turn the cutting-edge knowledge outside IT industry (usually data science academia and industry) to generally available and applicable tools in the ecosystem. In other words, it allows the massive conversion between data-science knowledge and productivity.
