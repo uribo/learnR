@@ -2,9 +2,30 @@
 
 # List
 
-A list is a generic vector that is allowed to hold different types of objects, even other lists.
+A list is a generic vector that is allowed to include different types of objects, even other lists.
 
 ## Defining list
+
+We can use `list` function to define a list. Different types of objects can be put into one list. For example, the following code creates a list that contains a single-entry numeric vector, two-entry logical vector, and a character vector containing three values.
+
+
+```r
+> l0 <- list(1,c(TRUE,FALSE),c("a","b","c"))
+> l0
+```
+
+```
+[[1]]
+[1] 1
+
+[[2]]
+[1]  TRUE FALSE
+
+[[3]]
+[1] "a" "b" "c"
+```
+
+We can assign names to each entry by using named arguments.
 
 
 ```r
@@ -22,6 +43,8 @@ $b
 $c
 [1] 3
 ```
+
+
 
 
 ```r

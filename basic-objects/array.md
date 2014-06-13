@@ -2,7 +2,7 @@
 
 # Array
 
-Conceptually, array is a natural extension to matrix in its number of dimensions. More specifically, an array is a vector that is represented and accessible in a given number of dimensions. 
+Array is a natural extension to matrix in its number of dimensions. More specifically, an array is a vector that is represented and accessible in a given number of dimensions. 
 
 If you are already feel familiar with vectors and matrices, you won't be surprise to see anything that is applicable to arrays.
 
