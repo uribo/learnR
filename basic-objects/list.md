@@ -2,11 +2,29 @@
 
 # List
 
+A list is a generic vector that is allowed to hold different types of objects, even other lists.
+
 ## Defining list
 
 
 ```r
 > l1 <- list(a=1,b=2,c=3)
+> l1
+```
+
+```
+$a
+[1] 1
+
+$b
+[1] 2
+
+$c
+[1] 3
+```
+
+
+```r
 > l1$a
 ```
 
@@ -46,7 +64,10 @@ $b
 ```r
 > names(l1) <- c("A","B","C")
 > l1$d <- 4
-> 
+```
+
+
+```r
 > l2 <- list(a=c(1,2,3),b=c("x","y","z","w"))
 > l2$b
 ```
@@ -78,6 +99,7 @@ $b
 [1] 3
 ```
 
+
 ```r
 > l3 <- as.list(c(a=1,b=2,c=3))
 > l3$d
@@ -106,10 +128,10 @@ $d
 [1] "hello" "world"
 ```
 
+
 ```r
 > l4 <- list(a=1,b=2,c=3)
 > c4 <- unlist(l4)
 > l4 <- list(a=1,b=2,c="hello")
 > c4 <- unlist(l4)
 ```
-

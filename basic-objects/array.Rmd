@@ -8,19 +8,42 @@ opts_chunk$set(prompt=TRUE, comment='', results='markup')
 
 # Array
 
+Conceptually, array is a natural extension to matrix in its number of dimensions. More specifically, an array is a vector that is represented and accessible in a given number of dimensions. 
+
+If you are already feel familiar with vectors and matrices, you won't be surprise to see anything that is applicable to arrays.
+
 ## Defining array
+
+To define an array, we use `array` function by supplying a vector data, how these data are arranged in different dimensions, and sometimes the names of the rows and columns in these dimensions.
+
+Suppose we have some data (10 integers from 0 to 9) and we need to arrange them in three dimensions: 1 for the first dimension, 5 for the second, and 2 for the third.
+
+```{r}
+a1 <- array(c(0,1,2,3,4,5,6,7,8,9),dim=c(1,5,2))
+a1
+```
+
+We can clearly see how we may access these entries by looking at the notations around them.
+
+Moreover, we can add names for these dimensions when create the array.
 
 ```{r}
 a1 <- array(c(0,1,2,3,4,5,6,7,8,9),dim=c(1,5,2),
   dimnames=list(c("r1"),c("c1","c2","c3","c4","c5"),c("k1","k2")))
+a1
 ```
+
+Alternatively, for an array that is already created, we can call `dimnames(...) <-` to setup the names for each dimension by supplying a list of several character vectors.
 
 ```{r}
 a0 <- array(c(0,1,2,3,4,5,6,7,8,9,10),dim=c(1,5,2))
 dimnames(a0) <- list(c("r1"),c("c1","c2","c3","c4","c5"),c("k1","k2"))
+a0
 ```
 
 ## Subsetting array
+
+The principle of subsetting an array is exactly the same with subsetting a matrix. Here we can supply a vector for each dimension to extract a subset of an array.
 
 ```{r}
 a1[1,,]
