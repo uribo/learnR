@@ -1,6 +1,6 @@
 # learnR
 
-This book will bring you to the world of statistical computing and data analysis with R programming language. No matter Whether you are a beginner or an experienced user, this book is intended for everyone who wishes to systematically learn problem-solving skills related to programming for statistics, econometrics, machine learning, financial computing, data processing, visualization, and so on.
+This book will bring you to the world of statistical computing and data analysis with R programming language. No matter whether you are a beginner or an experienced user, this book is intended for everyone who wishes to systematically learn problem-solving skills related to programming for statistics, econometrics, machine learning, financial computing, data processing, visualization, and so on.
 
 This book contains both introductory and advanced materials. You may choose where to begin based on your current knowledge.
 
