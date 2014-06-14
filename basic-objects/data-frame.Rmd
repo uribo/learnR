@@ -10,6 +10,14 @@ opts_chunk$set(prompt=TRUE, comment='', results='markup')
 
 A data frame is a table with a number of rows and columns like a matrix. However, columns in a data frame need not be the same type. It is consistent with most data tables: different types of information describe a data record. 
 
+The following example is a table that can be fully characterized by a data frame.
+
+| Name     | Gender | Age | Major            |
+|----------|--------|-----|------------------|
+| Ken      | Male   | 24  | Finance          |
+| Ashley   | Female | 25  | Statistics       |
+| Jennifer | Female | 23  | Computer Science |
+
 ## Defining data frame
 
 ```{r}
@@ -46,4 +54,8 @@ df1[df1$x>=0,]
 df1[df1$name=="A",]
 ```
 
+## Transforming a data frame
 
+## Loading data frame from a file
+
+## Saving data frame to a file
