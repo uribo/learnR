@@ -2,7 +2,7 @@
 
 # Vector
 
-A vector is a group of primitive values of the same type. It can be a group of numbers, trues or falses, texts, and some other types.  It is one of the building blocks of all R objects. 
+A vector is a group of primitive values of the same type. It can be a group of numbers, true/false values, texts, and values of some other type. It is one of the building blocks of all R objects. 
 
 There are several types of vectors in R. They distinct from each other in the type of entries they hold. Here we will see the most commonly used types of vectors including numeric vector, logical vector, character vector, and so on.
 
@@ -29,7 +29,7 @@ To assign this value to a symbol, we can use `<-`.
 > x <- 1.5
 ```
 
-Then the value is assigned to `x` and we can use `x` to represent the value in later expressions.
+Then the value is assigned to symbol `x` and we can use `x` to represent the value in later expressions.
 
 
 ```r
@@ -40,7 +40,7 @@ Then the value is assigned to `x` and we can use `x` to represent the value in l
 [1] 1.5
 ```
 
-We can call `numeric` function to create a zero vector of a specific length.
+We can call `numeric` function to create a zero numeric vector of a specific length.
 
 
 ```r
@@ -62,7 +62,7 @@ We can also use `c` function to *combine* several vectors to be one vector.
 [1] 1 2 3 4 5
 ```
 
-We can combine several single-entry vectors with a multi-entry vector to obtain the previous vector.
+For example, we can combine several single-entry vectors with a multi-entry vector to obtain the previous vector.
 
 
 ```r
@@ -84,7 +84,7 @@ To define a series of consecutive numbers with step one, `:` operator will do th
 [1] 1 2 3 4 5
 ```
 
-A more general way is to use `seq` function to produce a vector of a specific sequence like, for example, one from 1 to 10 with step 2.
+A more general way to produce an integer sequence is to use `seq` function. For example, the following code produces a sequence from 1 to 10 with step 2.
 
 
 ```r
@@ -95,7 +95,9 @@ A more general way is to use `seq` function to produce a vector of a specific se
 [1] 1 3 5 7 9
 ```
 
-Or another vector that starts from 3 with length 10.
+A function like `seq` has many arguments. We can call a function by supplying all the arguments but it is in most cases not necessary. Most functions provide reasonable default values for some arguments, which makes it easier for us to call a function. In this case we only need to specify the argument we would like to modify from its default value.
+
+For example, we can create another vector that starts from 3 with length 10 by specifying `length.out` argument.
 
 
 ```r
@@ -105,6 +107,8 @@ Or another vector that starts from 3 with length 10.
 ```
  [1]  3  4  5  6  7  8  9 10 11 12
 ```
+
+A function call like the above uses named argument `length.out` so that other arguments are kept default and only this argument is modified.
 
 There are many ways we can define numeric vectors, but we should always be careful when we use `:` to define a range of numbers.
 

@@ -11,11 +11,11 @@ R is totally free. You don't need to buy a license to use R so that there is no 
 
 #### It's open-source
 
-R and most of the packages are fully open-source. Thousands of users and developers are constantly reviewing the source code of the packages to see whether there are bugs to fix or things to improve. If you find something unexpected happens, you can even dig into the source code and find where the problem is.
+R and most of the packages are fully open-source. Thousands of users and developers are constantly reviewing the source code of the packages to see whether there are bugs to fix or things to improve. If you encounter exceptions, you can even dig into the source code, find where the problem is, and may contribute to fixing it.
 
 #### It's popular
 
-R is the most popular statistical programming language and platform to perform data mining, analysis, and visualization. High popularity often means easiness of communication between you and other users because you "speak"" the same language.
+R is very popular, if not the most, statistical programming language and platform to perform data mining, analysis, and visualization. High popularity often means easier communication between you and other users because you "speak"" the same language.
 
 #### It's flexible
 
@@ -39,8 +39,8 @@ A great number of R users and developers actively contribute to the open-source 
 
 If you have any problems using R, just google what puzzles your mind, there are probably already some answers to your question. If not, just issue a question on [stackoverflow](http://stackoverflow.com), you will get response in a very short time.
 
-#### It has cutting-edge techniques
+#### It is cutting-edge
 
 Many R users are professional researchers in statistics, econometrics, or other displines. It is more often that an author publishes his or her new paper along with a new package that includes the cutting-edge techniques presented in the paper. Maybe it's a new statistical test, a pattern recognition method, or a better-tuned optimization algorithm. 
 
-No matter what it is, R community has the previledge to be the first to apply it in real world, improve its functionaly, and reveal its potentials.
+No matter what it is, R community has the previledge to be early,if not the first, to apply cutting-edge data-science knowledge in real world, improve its functionaly, and reveal its potentials.
