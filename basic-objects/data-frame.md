@@ -2,7 +2,7 @@
 
 # Data frame
 
-A data frame is a table with a number of rows and columns like a matrix. However, columns in a data frame need not be the same type. It is consistent with most data tables: different types of information describe a data record. 
+A data frame is a table with a number of rows and columns. It looks like a matrix but its columns are not necessarily the same type. This is consistent with most data tables: a row, or data record is described by multiple columns of different types.
 
 The following example is a table that can be fully characterized by a data frame.
 
@@ -13,6 +13,26 @@ The following example is a table that can be fully characterized by a data frame
 | Jennifer | Female | 23  | Computer Science |
 
 ## Creating data frame
+
+To create such a data frame, we can call `data.frame` function and supply the data in each column.
+
+
+```r
+> df1 <- data.frame(Name=c("Ken","Ashley","Jennifer"),
++   Gender=c("Male","Female","Female"),
++   Age=c(24,25,23),
++   Major=c("Finance","Statistics","Computer Science"))
+> df1
+```
+
+```
+      Name Gender Age            Major
+1      Ken   Male  24          Finance
+2   Ashley Female  25       Statistics
+3 Jennifer Female  23 Computer Science
+```
+
+Note that creating a data frame is exactly the same with creating a list. It is because in essence a data frame *is* a list in which each list member represents a column and has the same number of elements.
 
 
 ```r
@@ -33,17 +53,17 @@ The following example is a table that can be fully characterized by a data frame
 ```
 
 ```
-   id       x       y
-1   1 0.05341  0.1410
-2   2 0.25145  0.4903
-3   3 0.49307  0.9159
-4   4 0.20583 -0.8502
-5   5 0.11375  2.0685
-6   6 0.97999  0.1349
-7   7 0.26675  1.4629
-8   8 0.91143  0.4490
-9   9 0.37311 -2.2426
-10 10 0.46660  0.7164
+   id      x       y
+1   1 0.7945  0.5219
+2   2 0.9838  1.1089
+3   3 0.5802 -0.5626
+4   4 0.2593  1.4595
+5   5 0.8518 -0.3020
+6   6 0.1167  1.0676
+7   7 0.2940  0.1625
+8   8 0.1642 -0.1727
+9   9 0.8519 -0.2487
+10 10 0.1265 -0.2869
 ```
 
 ```r
@@ -52,11 +72,11 @@ The following example is a table that can be fully characterized by a data frame
 
 ```
   id name      x       y
-1  1    A 0.9585 -0.6402
-2  2    A 0.3536 -0.2253
-3  3    B 0.9362 -0.7935
-4  4    B 0.6333 -1.3460
-5  5    C 0.7566 -1.1669
+1  1    A 0.1415  0.9586
+2  2    A 0.5004  1.2070
+3  3    B 0.7367 -0.5492
+4  4    B 0.9848  0.7408
+5  5    C 0.6234 -1.4185
 ```
 
 ```r
@@ -64,12 +84,12 @@ The following example is a table that can be fully characterized by a data frame
 ```
 
 ```
-  id name       x        y stringsAsFactor
-1  1    A 0.12976  0.64619           FALSE
-2  2    A 0.47279 -0.60277           FALSE
-3  3    B 0.98929  0.07605           FALSE
-4  4    B 0.01238  0.36913           FALSE
-5  5    C 0.43512  0.77873           FALSE
+  id name       x       y stringsAsFactor
+1  1    A 0.32183  0.1265           FALSE
+2  2    A 0.24351 -0.4274           FALSE
+3  3    B 0.68076 -0.9077           FALSE
+4  4    B 0.54664  1.7759           FALSE
+5  5    C 0.08767  0.3821           FALSE
 ```
 
 ```r
@@ -168,11 +188,11 @@ Levels: A B C
 
 ```
   name       x
-a    A -0.9007
-b    A  0.5631
-c    B -0.9832
-d    B -1.6364
-e    C  0.7679
+a    A  0.3105
+b    A  0.8616
+c    B -0.2511
+d    B -0.6380
+e    C  0.7690
 ```
 
 ```r
@@ -194,10 +214,10 @@ e  5    C
 
 ```
   id name       x
-a  1    A -0.9007
-b  2    A  0.5631
-c  3    B -0.9832
-d  4    B -1.6364
+a  1    A  0.3105
+b  2    A  0.8616
+c  3    B -0.2511
+d  4    B -0.6380
 ```
 
 ```r
@@ -205,7 +225,7 @@ d  4    B -1.6364
 ```
 
 ```
-[1] -0.9007  0.5631 -0.9832 -1.6364
+[1]  0.3105  0.8616 -0.2511 -0.6380
 ```
 
 ```r
@@ -214,10 +234,10 @@ d  4    B -1.6364
 
 ```
   id       x
-a  1 -0.9007
-b  2  0.5631
-c  3 -0.9832
-d  4 -1.6364
+a  1  0.3105
+b  2  0.8616
+c  3 -0.2511
+d  4 -0.6380
 ```
 
 ```r
@@ -226,8 +246,9 @@ d  4 -1.6364
 
 ```
   id name      x
-b  2    A 0.5631
-e  5    C 0.7679
+a  1    A 0.3105
+b  2    A 0.8616
+e  5    C 0.7690
 ```
 
 ```r
@@ -235,9 +256,9 @@ e  5    C 0.7679
 ```
 
 ```
-  id name       x
-a  1    A -0.9007
-b  2    A  0.5631
+  id name      x
+a  1    A 0.3105
+b  2    A 0.8616
 ```
 
 ## Transforming a data frame
