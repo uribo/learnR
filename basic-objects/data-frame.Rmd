@@ -10,7 +10,7 @@ opts_chunk$set(prompt=TRUE, comment='', results='markup')
 
 A data frame is a table with a number of rows and columns. It looks like a matrix but its columns are not necessarily the same type. This is consistent with most data tables: a row, or data record is described by multiple columns of different types.
 
-The following example is a table that can be fully characterized by a data frame.
+The following table is an example that can be fully characterized by a data frame.
 
 | Name     | Gender | Age | Major            |
 |----------|--------|-----|------------------|
@@ -23,51 +23,161 @@ The following example is a table that can be fully characterized by a data frame
 To create such a data frame, we can call `data.frame` function and supply the data in each column.
 
 ```{r}
-df1 <- data.frame(Name=c("Ken","Ashley","Jennifer"),
+persons <- data.frame(Name=c("Ken","Ashley","Jennifer"),
   Gender=c("Male","Female","Female"),
   Age=c(24,25,23),
   Major=c("Finance","Statistics","Computer Science"))
+persons
+```
+
+Note that creating a data frame is exactly the same with creating a list. It is because in essence a data frame *is* a list in which each member represents a column and has the same number of elements.
+
+Other than creating a data frame from raw data, we can also create it from a list by calling either `data.frame` directly or `as.data.frame`.
+
+```{r}
+l1 <- list(x=c(1,2,3),y=c("a","b","c"))
+data.frame(l1)
+as.data.frame(l1)
+```
+
+We can also create a data frame from a matrix with the same method.
+
+```{r}
+m1 <- matrix(c(1,2,3,4,5,6,7,8,9),nrow=3,byrow=FALSE)
+data.frame(m1)
+as.data.frame(m1)
+```
+
+Note that the conversion also automatically assign column names to the new data frame. In fact, as you may verify, if the matrix already has column names or row names, they will be preserved in the conversion.
+
+## Naming rows and columns
+
+Since a data frame is a list but also looks like a matrix, the way we access these two types of objects both apply to data frame.
+
+```{r}
+df1 <- data.frame(id=1:5,x=c(0,2,1,-1,-3),y=c(0.5,0.2,0.1,0.5,0.9))
 df1
 ```
 
-Note that creating a data frame is exactly the same with creating a list. It is because in essence a data frame *is* a list in which each list member represents a column and has the same number of elements.
+We can rename the columns and rows just like how we do so with a matrix.
 
 ```{r}
-data.frame(id=1:5,x=c(0,2,1,-1,-3),y=c(0.5,0.2,0.1,0.5,0.9))
-data.frame(id=1:10,x=runif(10),y=rnorm(10))
-data.frame(id=1:5,name=c("A","A","B","B","C"),x=runif(5),y=rnorm(5))
-data.frame(id=1:5,name=c("A","A","B","B","C"),x=runif(5),y=rnorm(5),stringsAsFactor=FALSE)
-
-df1 <- data.frame(1:5,c("A","A","B","B","C"),rnorm(5))
-colnames(df1) <- c("id","name","x")
+colnames(df1) <- c("id","level","score")
 rownames(df1) <- letters[1:5]
-
-as.data.frame(matrix(c(1,2,3,4,5,6,7,8,9),nrow=3,byrow=FALSE))
+df1
 ```
-
 
 ## Subsetting data frame
 
-In essence, data frame is nothing special but a list of vectors, each of which contains the same number of elements. Therefore, it has common features of both list and matrix.
+Since data frame is a matrix-like list of columns, we can use both set of notations to access the elements and subsets in a data frame.
+
+### Subsetting as a list
+
+If we would like to regard a data frame as a list of columns, we can use list notations to extract value or perform subsetting.
+
+For example, we can use the dollar-sign to extract the value of one column by name, or use double square brackets to do so by index.
 
 ```{r}
 df1$id
-df1[1]
-df1["name"]
-df1[c("id","name")]
-df1[1:2]
-df1[,"name"]
-df1[,c("name","x")]
-df1[,1:2]
-df1[1:4,]
-df1[1:4,"x"]
-df1[1:4,c("id","x")]
-df1[df1$x>=0,]
-df1[df1$name=="A",]
+df1[[1]]
 ```
+
+List subsetting perfectly applies to a data frame and also yields new data frame. The single square brackets allows us to use an integer vector to extract columns by index, a character vector to extract columns by name, or a logical vector to extract columns by `TRUE` and `FALSE` selection.
+
+```{r}
+df1[1]
+df1[1:2]
+df1["level"]
+df1[c("id","score")]
+df1[c(TRUE,FALSE,TRUE)]
+```
+
+### Subsetting as a matrix
+
+However, the list notation does not support row access. In contrast, the matrix notation provides more flexibility. If we view a data frame as a matrix, the two-dimensional accessor enables us to easily access an entry of a subset, which supports both column selection and row selection.
+
+In other words, we can use `[row,column]` notation to subset a data frame by specifying the row selector and column selector, which can be integer vectors, character vectors, and/or logical vectors.
+
+For example, we can specify the column selector:
+
+```{r}
+df1[,"level"]
+df1[,c("id","level")]
+df1[,1:2]
+```
+
+or the row selector:
+
+```{r}
+df1[1:4,]
+df1[c("c","e"),]
+```
+
+or both selectors at the same time:
+
+```{r}
+df1[,"id"]
+df1[1:4,"id"]
+df1[1:3,c("id","score")]
+```
+
+Note that the matrix notation will simplify the output. That is, if only one column is selected, the result won't be a data frame but the value of that column. To keep the result always being a data frame even if it only has a single column, we can use both notations at the same time.
+
+```{r}
+df1[1:4,]["id"]
+```
+
+Here the first group of brackets subsets the data frame as a matrix with the first four rows and all columns selected. The second group of brackes subsets the resulted data frame as a list with only `id` column selected but also resulting in a data frame.
+
+### Data filtering
+
+The following code filters the rows of `df1` by a criterion that `score >= 0.5` and selects `id` and `level` columns:
+
+```{r}
+df1$score >= 0.5
+df1[df1$score>=0.5,c("id","level")]
+```
+
+The following code filters the rows of `df1` by a criterion that the row name must be among a, d, or e, and selects the `id` and `score` columns.
+
+```{r}
+rownames(df1) %in% c("a","d","e")
+df1[rownames(df1) %in% c("a","d","e"),c("id","score")]
+```
+
+Both examples above basically uses matrix notation to select rows by logical vector and select columns by character vector.
+
+## Setting values
+
+
+
+## Factor
+
+One thing to notice is that the default behavior of a data frame tries to minimize memory usage. Sometimes this behavior might lead to unexpected problems silently.
+
+For example, when we create a data frame by supplying a character vector as a column, it  will by default convert the character vector to a **factor** that only stores the same value once so that repetitions will not cost much memory.
+
+We can verify this by calling `str` on data frame `persons` we created in the beginning.
+
+```{r}
+str(persons)
+```
+
+## Summarizing a data frame
+
+summary
 
 ## Transforming a data frame
 
+cbind
+rbind
+
 ## Loading data frame from a file
 
+read.table
+read.csv
+
 ## Saving data frame to a file
+
+write.table
+write.csv
