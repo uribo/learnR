@@ -6,7 +6,7 @@ Array is a natural extension to matrix in its number of dimensions. More specifi
 
 If you are already feel familiar with vectors and matrices, you won't be surprised to see anything that is applicable to arrays.
 
-## Defining array
+## Creating array
 
 To define an array, we use `array` function by supplying a vector data, how these data are arranged in different dimensions, and sometimes the names of the rows and columns in these dimensions.
 

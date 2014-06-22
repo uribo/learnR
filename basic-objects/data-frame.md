@@ -12,7 +12,7 @@ The following example is a table that can be fully characterized by a data frame
 | Ashley   | Female | 25  | Statistics       |
 | Jennifer | Female | 23  | Computer Science |
 
-## Defining data frame
+## Creating data frame
 
 
 ```r
@@ -33,17 +33,17 @@ The following example is a table that can be fully characterized by a data frame
 ```
 
 ```
-   id      x       y
-1   1 0.8857  0.8881
-2   2 0.3779  1.1079
-3   3 0.3287 -0.2357
-4   4 0.4145 -0.5332
-5   5 0.1261 -2.2674
-6   6 0.9637 -1.1287
-7   7 0.3674 -0.7839
-8   8 0.0241  0.2756
-9   9 0.5851 -0.8093
-10 10 0.1164 -2.6640
+   id       x       y
+1   1 0.05341  0.1410
+2   2 0.25145  0.4903
+3   3 0.49307  0.9159
+4   4 0.20583 -0.8502
+5   5 0.11375  2.0685
+6   6 0.97999  0.1349
+7   7 0.26675  1.4629
+8   8 0.91143  0.4490
+9   9 0.37311 -2.2426
+10 10 0.46660  0.7164
 ```
 
 ```r
@@ -52,11 +52,11 @@ The following example is a table that can be fully characterized by a data frame
 
 ```
   id name      x       y
-1  1    A 0.1034 -1.4513
-2  2    A 0.3307 -0.3215
-3  3    B 0.2376  0.4425
-4  4    B 0.9838  0.7173
-5  5    C 0.7188  0.3395
+1  1    A 0.9585 -0.6402
+2  2    A 0.3536 -0.2253
+3  3    B 0.9362 -0.7935
+4  4    B 0.6333 -1.3460
+5  5    C 0.7566 -1.1669
 ```
 
 ```r
@@ -64,12 +64,12 @@ The following example is a table that can be fully characterized by a data frame
 ```
 
 ```
-  id name      x        y stringsAsFactor
-1  1    A 0.4538 -0.34337           FALSE
-2  2    A 0.2316 -0.68001           FALSE
-3  3    B 0.5579 -0.94557           FALSE
-4  4    B 0.8835 -0.02435           FALSE
-5  5    C 0.6224 -0.70479           FALSE
+  id name       x        y stringsAsFactor
+1  1    A 0.12976  0.64619           FALSE
+2  2    A 0.47279 -0.60277           FALSE
+3  3    B 0.98929  0.07605           FALSE
+4  4    B 0.01238  0.36913           FALSE
+5  5    C 0.43512  0.77873           FALSE
 ```
 
 ```r
@@ -168,11 +168,11 @@ Levels: A B C
 
 ```
   name       x
-a    A -0.0418
-b    A -0.6246
-c    B -0.6724
-d    B  0.2955
-e    C  0.6745
+a    A -0.9007
+b    A  0.5631
+c    B -0.9832
+d    B -1.6364
+e    C  0.7679
 ```
 
 ```r
@@ -194,10 +194,10 @@ e  5    C
 
 ```
   id name       x
-a  1    A -0.0418
-b  2    A -0.6246
-c  3    B -0.6724
-d  4    B  0.2955
+a  1    A -0.9007
+b  2    A  0.5631
+c  3    B -0.9832
+d  4    B -1.6364
 ```
 
 ```r
@@ -205,7 +205,7 @@ d  4    B  0.2955
 ```
 
 ```
-[1] -0.0418 -0.6246 -0.6724  0.2955
+[1] -0.9007  0.5631 -0.9832 -1.6364
 ```
 
 ```r
@@ -214,10 +214,10 @@ d  4    B  0.2955
 
 ```
   id       x
-a  1 -0.0418
-b  2 -0.6246
-c  3 -0.6724
-d  4  0.2955
+a  1 -0.9007
+b  2  0.5631
+c  3 -0.9832
+d  4 -1.6364
 ```
 
 ```r
@@ -226,8 +226,8 @@ d  4  0.2955
 
 ```
   id name      x
-d  4    B 0.2955
-e  5    C 0.6745
+b  2    A 0.5631
+e  5    C 0.7679
 ```
 
 ```r
@@ -236,8 +236,8 @@ e  5    C 0.6745
 
 ```
   id name       x
-a  1    A -0.0418
-b  2    A -0.6246
+a  1    A -0.9007
+b  2    A  0.5631
 ```
 
 ## Transforming a data frame

@@ -18,7 +18,7 @@ The following example is a table that can be fully characterized by a data frame
 | Ashley   | Female | 25  | Statistics       |
 | Jennifer | Female | 23  | Computer Science |
 
-## Defining data frame
+## Creating data frame
 
 ```{r}
 data.frame(id=1:5,x=c(0,2,1,-1,-3),y=c(0.5,0.2,0.1,0.5,0.9))

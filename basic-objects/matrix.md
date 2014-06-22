@@ -2,11 +2,11 @@
 
 # Matrix
 
-A matrix is a vector that is represented and accessible in two dimensions. Therefore, what applies to vectors also applies to matrix. For example, each type of vector (e.g. numeric vector, logical vector) has their matrix version, that is, there are numeric matrix, logical matrix and so on.
+A matrix is a vector represented and accessible in two dimensions. Therefore, what applies to vectors also applies to matrix. For example, each type of vector (e.g. numeric vector, logical vector) has their matrix version, that is, there are numeric matrix, logical matrix and so on.
 
-## Defining a matrix
+## Creating matrix
 
-We can call `matrix` function to create a matrix from a vector by setting up one of its dimensions.
+We can call `matrix` function to create a matrix from a vector by setting up one of its two dimensions.
 
 
 ```r
