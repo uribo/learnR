@@ -318,7 +318,7 @@ b  2   0.2
 c  3   0.1
 ```
 
-Note that the matrix notation will simplify the output. That is, if only one column is selected, the result won't be a data frame but the value of that column. To keep the result always being a data frame even if it only has a single column, we can use both notations at the same time.
+Note that the matrix notation automatically simplifies the output. That is, if only one column is selected, the result won't be a data frame but the value of that column. To keep the result always being a data frame even if it only has a single column, we can use both notations together.
 
 
 ```r
@@ -333,7 +333,7 @@ c  3
 d  4
 ```
 
-Here the first group of brackets subsets the data frame as a matrix with the first four rows and all columns selected. The second group of brackes subsets the resulted data frame as a list with only `id` column selected but also resulting in a data frame.
+Here the first group of brackets subsets the data frame as a matrix with the first four rows and all columns selected. The second group of brackes subsets the resulted data frame as a list with only `id` column selected, which results in a data frame.
 
 ### Data filtering
 
@@ -385,11 +385,108 @@ Both examples above basically uses matrix notation to select rows by logical vec
 
 ## Setting values
 
+Setting the values or a subset of a data frame is almost the same as how we do so with either a list or a matrix.
 
+### Setting values as a list
+
+We can assign new values to a list member using `$` and `<-` together.
+
+
+```r
+> df1$score <- c(0.6,0.3,0.2,0.4,0.8)
+> df1
+```
+
+```
+  id level score
+a  1     0   0.6
+b  2     2   0.3
+c  3     1   0.2
+d  4    -1   0.4
+e  5    -3   0.8
+```
+
+Alternatively, single square brackets work too, but it also allows multiple changes in one expression in contrast with double square brackets.
+
+
+```r
+> df1["score"] <- c(0.8,0.5,0.2,0.4,0.8)
+> df1
+```
+
+```
+  id level score
+a  1     0   0.8
+b  2     2   0.5
+c  3     1   0.2
+d  4    -1   0.4
+e  5    -3   0.8
+```
+
+```r
+> df1[["score"]] <- c(0.4,0.5,0.2,0.8,0.4)
+> df1
+```
+
+```
+  id level score
+a  1     0   0.4
+b  2     2   0.5
+c  3     1   0.2
+d  4    -1   0.8
+e  5    -3   0.4
+```
+
+```r
+> df1[c("level","score")] <- list(level=c(1,2,1,0,0),score=c(0.1,0.2,0.3,0.4,0.5))
+> df1
+```
+
+```
+  id level score
+a  1     1   0.1
+b  2     2   0.2
+c  3     1   0.3
+d  4     0   0.4
+e  5     0   0.5
+```
+
+### Setting values as a matrix
+
+Using list notations to set values of a data frame has the same problem with subsetting. We can only access the columns. If we need to set values with more flexibility, we can use matrix notations.
+
+
+```r
+> df1[1:3,"level"] <- c(-1,0,1)
+> df1
+```
+
+```
+  id level score
+a  1    -1   0.1
+b  2     0   0.2
+c  3     1   0.3
+d  4     0   0.4
+e  5     0   0.5
+```
+
+```r
+> df1[1:2,c("level","score")] <- list(level=c(0,0),score=c(0.9,1.0))
+> df1
+```
+
+```
+  id level score
+a  1     0   0.9
+b  2     0   1.0
+c  3     1   0.3
+d  4     0   0.4
+e  5     0   0.5
+```
 
 ## Factor
 
-One thing to notice is that the default behavior of a data frame tries to minimize memory usage. Sometimes this behavior might lead to unexpected problems silently.
+One thing to notice is that the default behavior of a data frame tries to use memory more efficiently. Sometimes this behavior might lead to unexpected problems silently.
 
 For example, when we create a data frame by supplying a character vector as a column, it  will by default convert the character vector to a **factor** that only stores the same value once so that repetitions will not cost much memory.
 
@@ -408,21 +505,92 @@ We can verify this by calling `str` on data frame `persons` we created in the be
  $ Major : Factor w/ 3 levels "Computer Science",..: 2 3 1
 ```
 
-## Summarizing a data frame
+As we can clearly find out that `Name`, `Gender`, and `Major` are not character vectors but factor object. It is reasonable that `Gender` is represented by a factor because it may only be either `Female` or `Male` so that using two integers to represent these two values is more efficient than using character vector to store all the values regardless of the repetition.
 
-summary
+However, it may induce problems for other columns not limited to take several possible values. For example, if we want to set a `Name` in `persons`,
 
-## Transforming a data frame
+
+```r
+> persons[1,"Name"] <- "John"
+```
+
+```
+Warning: invalid factor level, NA generated
+```
+
+```r
+> persons
+```
+
+```
+      Name Gender Age            Major
+1     <NA>   Male  24          Finance
+2   Ashley Female  25       Statistics
+3 Jennifer Female  23 Computer Science
+```
+
+a warning message appears. It happens because in the initial `Name` dictionary, there is no word called John, therefore we cannot set the name of the first person to be such "non-existing" value. The same thing happens when we set any `Gender` to be `Unknown`. The reason is the exactly the same: when the column is initially created from a character vector while we define a data frame, the column will by default be a factor whose value must be taken from the dictionary created from the unique values in that character vector.
+
+This behavior is sometimes very annoying and does not really help much, especially when memory is cheap today. The simplist way to avoid this behavior is to set `stringsAsFactors = FALSE` when we create a data frame.
+
+
+```r
+> persons <- data.frame(Name=c("Ken","Ashley","Jennifer"),
++   Gender=factor(c("Male","Female","Female")),
++   Age=c(24,25,23),
++   Major=c("Finance","Statistics","Computer Science"),
++   stringsAsFactors=FALSE)
+> str(persons)
+```
+
+```
+'data.frame':	3 obs. of  4 variables:
+ $ Name  : chr  "Ken" "Ashley" "Jennifer"
+ $ Gender: Factor w/ 2 levels "Female","Male": 2 1 1
+ $ Age   : num  24 25 23
+ $ Major : chr  "Finance" "Statistics" "Computer Science"
+```
+
+If we really want factor object to play its role, we can explicitly call `factor` function at specific columns.
+
+## Useful functions for data frame
+
+There are many useful functions for data frame. Here we only introduce the a few most commonly used ones.
+
+### Summarizing a data frame
+
+`summary` function works with a data frame by generating a table that shows the summary statistics of each column.
+
+
+```r
+> summary(persons)
+```
+
+```
+     Name              Gender       Age          Major          
+ Length:3           Female:2   Min.   :23.0   Length:3          
+ Class :character   Male  :1   1st Qu.:23.5   Class :character  
+ Mode  :character              Median :24.0   Mode  :character  
+                               Mean   :24.0                     
+                               3rd Qu.:24.5                     
+                               Max.   :25.0                     
+```
+
+For a factor (`Gender`) the summary counts the number of rows taking each value, or level. For a numeric vector, the summary shows the important quantiles of the numbers. For other types of columns, it shows the length, class, and mode of them.
+
+### Binding data frames
 
 cbind
 rbind
 
-## Loading data frame from a file
+## Load from/Write to a file
+
+### Loading data frame from a file
 
 read.table
 read.csv
 
-## Saving data frame to a file
+### Saving data frame to a file
 
 write.table
 write.csv
