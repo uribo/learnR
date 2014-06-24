@@ -551,13 +551,11 @@ This behavior is sometimes very annoying and does not really help much, especial
  $ Major : chr  "Finance" "Statistics" "Computer Science"
 ```
 
-If we really want factor object to play its role, we can explicitly call `factor` function at specific columns.
+If we really want factor object to play its role, we can explicitly call `factor` function at specific columns, just like what we do for `Gender` column above.
 
 ## Useful functions for data frame
 
-There are many useful functions for data frame. Here we only introduce the a few most commonly used ones.
-
-### Summarizing a data frame
+There are many useful functions for data frame. Here we only introduce a few but the most commonly used ones.
 
 `summary` function works with a data frame by generating a table that shows the summary statistics of each column.
 
@@ -578,19 +576,86 @@ There are many useful functions for data frame. Here we only introduce the a few
 
 For a factor (`Gender`) the summary counts the number of rows taking each value, or level. For a numeric vector, the summary shows the important quantiles of the numbers. For other types of columns, it shows the length, class, and mode of them.
 
-### Binding data frames
+`rbind` and `cbind`, as their names suggest, perform row binding and column binding respectively.
 
-cbind
-rbind
+
+```r
+> rbind(persons,data.frame(Name="John",Gender="Male",Age=25,Major="Statistics"))
+```
+
+```
+      Name Gender Age            Major
+1      Ken   Male  24          Finance
+2   Ashley Female  25       Statistics
+3 Jennifer Female  23 Computer Science
+4     John   Male  25       Statistics
+```
+
+```r
+> cbind(persons,Registered=c(TRUE,TRUE,FALSE),Projects=c(3,2,3))
+```
+
+```
+      Name Gender Age            Major Registered Projects
+1      Ken   Male  24          Finance       TRUE        3
+2   Ashley Female  25       Statistics       TRUE        2
+3 Jennifer Female  23 Computer Science      FALSE        3
+```
+
+`expand.grid` function generates a data frame that includes all combinations of the values in the columns.
+
+
+```r
+> expand.grid(type=c("A","B"),class=c("M","L","XL"))
+```
+
+```
+  type class
+1    A     M
+2    B     M
+3    A     L
+4    B     L
+5    A    XL
+6    B    XL
+```
 
 ## Load from/Write to a file
 
-### Loading data frame from a file
+In practice, data are usually stored in files. R provides a number of functions to read table from a file or write a data frame to a file. If a file stores a data table, it is often well organized and follow some convention that specifies how rows and columns are arranged. In most cases, we don't have to read a file byte to byte but call functions like `read.table` or `read.csv`.
 
-read.table
-read.csv
+The most popular software-neutral data format is CSV (Comma-Separated Values). The format is basically organized in a way that values in different columns are separated by comma and the first row is by default regarded as the header. For example, `persons` may be represented in the following CSV format:
 
-### Saving data frame to a file
+```
+Name,Gender,Age,Major
+Ken,Male,24,Finance
+Ashley,Female,25,Statistics
+Jennifer,Female,23,Computer Science
+```
 
-write.table
-write.csv
+To read the data into R environment, we only need to call `read.csv(file)` where `file` is the path of the file.
+
+
+```r
+> read.csv("data/persons.csv")
+```
+
+```
+      Name Gender Age            Major
+1      Ken   Male  24          Finance
+2   Ashley Female  25       Statistics
+3 Jennifer Female  23 Computer Science
+```
+
+If we need to save a data frame to a CSV file, we may call `write.csv(file)` with some additional arguments.
+
+
+```r
+> write.csv("data/persons.csv", row.names=FALSE, quote=FALSE)
+```
+
+```
+x
+data/persons.csv
+```
+
+The argument `row.names=FALSE` avoids storing the row names which are not necessary, and the argument `quote=FALSE` avoids quoting texts in the output, which in most cases are not necessary either.
