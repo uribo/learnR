@@ -650,12 +650,7 @@ If we need to save a data frame to a CSV file, we may call `write.csv(file)` wit
 
 
 ```r
-> write.csv("data/persons.csv", row.names=FALSE, quote=FALSE)
-```
-
-```
-x
-data/persons.csv
+> write.csv(persons,"data/persons.csv",row.names=FALSE,quote=FALSE)
 ```
 
 The argument `row.names=FALSE` avoids storing the row names which are not necessary, and the argument `quote=FALSE` avoids quoting texts in the output, which in most cases are not necessary either.
