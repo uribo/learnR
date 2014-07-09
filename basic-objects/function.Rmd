@@ -141,7 +141,7 @@ calc <- function(x,y,type) {
 }
 ```
 
-Then we re-try the trouble-making call.
+Then we retry the trouble-making call and see how the exception is handled by pre-examination of arguments.
 
 ```{r}
 calc(1,2,c("add","minue"))
@@ -149,3 +149,23 @@ calc(1,2,c("add","minue"))
 
 ## Default value for argument
 
+A powerful function is often able to accept a wide range of input and meet a variety of demands. In most cases, it also means an increasing number of arguments. 
+
+If each time we have to specify tens of arguments for a powerful function, it would certainly be a mess. In this case, reasonable default values for arguments will largely simplify the code to call a function.
+
+The set the default value of an argument, use `arg=value` like the following example:
+
+```{r}
+increase <- function(x,y=1) {
+  x+y
+}
+```
+
+The newly defined function `increase` allows us to call it with only `x`. In this case, `y` automatically takes the value 1 unless it is explictly specified.
+
+```{r}
+increase(1)
+increase(1,2)
+increase(c(1,2,3))
+increase(1,c(2,3,4))
+```

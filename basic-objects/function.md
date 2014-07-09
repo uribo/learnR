@@ -23,7 +23,7 @@ add <- function(x,y) {
 }
 ```
 
-The syntax `function(x,y)` specifies the signature of the function, that is, the function takes two arguments named `x` and `y`. `{ x+y }` is the function body that contains a series of expressions given `x` and `y`. The value of the last expression determines the value returned by the function unless `return()` is called inside the function. Finally, the function is binded to the symbol `add` so that we can refer to this function with this symbol in the environment.
+The syntax `function(x,y)` specifies the signature of the function, that is, the function takes two arguments named `x` and `y`. `{ x+y }` is the function body that contains a series of expressions given `x` and `y`. The value of the last expression determines the value returned by the function unless `return()` is called inside the function. Finally, the function is bonded to the symbol `add` so that we can refer to this function with this symbol in the environment.
 
 Defining such a simple function, or any more complicated functions does not impose any difference from evaluating a vector. The function in R just acts like an object or value.
 
@@ -188,7 +188,7 @@ calc <- function(x,y,type) {
 }
 ```
 
-Then we re-try the trouble-making call.
+Then we retry the trouble-making call and see how the exception is handled by pre-examination of arguments.
 
 
 ```r
@@ -199,3 +199,52 @@ calc(1,2,c("add","minue"))
 Error: Only a single type is accepted
 ```
 
+## Default value for argument
+
+A powerful function is often able to accept a wide range of input and meet a variety of demands. In most cases, it also means an increasing number of arguments. 
+
+If each time we have to specify tens of arguments for a powerful function, it would certainly be a mess. In this case, reasonable default values for arguments will largely simplify the code to call a function.
+
+The set the default value of an argument, use `arg=value` like the following example:
+
+
+```r
+increase <- function(x,y=1) {
+  x+y
+}
+```
+
+The newly defined function `increase` allows us to call it with only `x`. In this case, `y` automatically takes the value 1 unless it is explictly specified.
+
+
+```r
+increase(1)
+```
+
+```
+[1] 2
+```
+
+```r
+increase(1,2)
+```
+
+```
+[1] 3
+```
+
+```r
+increase(c(1,2,3))
+```
+
+```
+[1] 2 3 4
+```
+
+```r
+increase(1,c(2,3,4))
+```
+
+```
+[1] 3 4 5
+```
