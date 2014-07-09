@@ -8,18 +8,49 @@ opts_chunk$set(prompt=TRUE, comment='', results='markup')
 
 # Formula
 
+Formula is an object used to represent an relationship between two sets of symbols. A formula is often created with `~` like `z ~ x + y`. It has no meaning unless a function interprets it. The most commonly seen usage of a formula is in `lm` function that performs a linear regression.
+
+Note that it is the function that interprets what the formula means. The following example shows different meanings when you write the formula in different ways.
+
+The following example works with a built-in dataset named `LifeCycleSavings`. We can load it with `data()` function.
+
+```{r}
+data(LifeCycleSavings)
+```
+
+Once the data is loaded into the environment, we can run a series linear regressions under different settings.
+
+```{r}
+lm(sr~pop15+pop75+dpi+ddpi,data=LifeCycleSavings)
+```
+
+```{r}
+lm(sr~1+pop15+pop75+dpi+ddpi,data=LifeCycleSavings)
+```
+
+```{r}
+lm(sr~pop15+pop75+dpi+ddpi-1,data=LifeCycleSavings)
+```
+
+```{r}
+lm(sr~.,data=LifeCycleSavings)
+```
+
+```{r}
+lm(sr~.-ddpi,data=LifeCycleSavings)
+```
+
+```{r}
+lm(log(sr)~log(pop15)+log(pop75)+log(dpi)+ddpi,data=LifeCycleSavings)
+```
+
+
+```{r}
+lm(sr~pop15+I(pop15^2)+pop75+I(pop75^2)+dpi+ddpi,data=LifeCycleSavings)
+```
+
 
 ```{r formula}
-data(LifeCycleSavings)
-
-lm(sr~pop15+pop75+dpi+ddpi,data=LifeCycleSavings)
-lm(sr~1+pop15+pop75+dpi+ddpi,data=LifeCycleSavings)
-lm(sr~pop15+pop75+dpi+ddpi-1,data=LifeCycleSavings)
-lm(sr~.,data=LifeCycleSavings)
-lm(sr~.-ddpi,data=LifeCycleSavings)
-
-lm(log(sr)~log(pop15)+log(pop75)+log(dpi)+ddpi,data=LifeCycleSavings)
-lm(sr~pop15+I(pop15^2)+pop75+I(pop75^2)+dpi+ddpi,data=LifeCycleSavings)
-
 plot(sr~ddpi,data=LifeCycleSavings)
 ```
+
