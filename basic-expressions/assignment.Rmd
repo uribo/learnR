@@ -3,7 +3,7 @@ opts_knit$set(base.dir='./', fig.path='', out.format='md')
 opts_chunk$set(prompt=TRUE, comment='', results='markup')
 # See yihui.name/knitr/options for more Knitr options.
 ##### Put other setup R code here
-
+set.seed(100)
 ```
 
 # Assignment
@@ -55,7 +55,6 @@ The quotation marks can be used in any place where we create a symbol.
 ```{r}
 `-a` <- function(a,d) { a-d }
 l1 <- list(`a+-`=rnorm(10),`a-+`=rnorm(10))
-data.frame(`a-+`=rnorm(10),`a+-`=rnorm(10))
 ```
 
 If the symbol name cannot be validly referred to directly, we also need to use the quotation marks to refer to the symbol.
@@ -65,3 +64,8 @@ If the symbol name cannot be validly referred to directly, we also need to use t
 l1$`a+-`
 ```
 
+An exception is `data.frame`. Even if we use quotation marks around a name with unusual symbols, the resulted `data.frame` will replace those symbols with `.`.
+
+```{r}
+data.frame(`a-+`=rnorm(10),`a+-`=rnorm(10))
+```

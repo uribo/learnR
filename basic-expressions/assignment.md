@@ -39,7 +39,7 @@ The expression `0` is evaluated only once so that the same value is assigned to 
 ```
 
 ```
-[1] 0.1801 0.1801 0.1801
+[1] -0.5022 -0.5022 -0.5022
 ```
 
 `rnorm(1)` generates a random number following the standard normal distribution. If each assignment re-invokes the random number generator, each symbol will have different values. But in fact, it does not happen. Later we will explain what really happens and you will have a better understanding on it.
@@ -59,21 +59,6 @@ The quotation marks can be used in any place where we create a symbol.
 ```r
 > `-a` <- function(a,d) { a-d }
 > l1 <- list(`a+-`=rnorm(10),`a-+`=rnorm(10))
-> data.frame(`a-+`=rnorm(10),`a+-`=rnorm(10))
-```
-
-```
-        a..    a...1
-1   0.30647 -1.14889
-2  -0.96092 -0.14261
-3  -1.48951 -0.02083
-4  -0.26834 -0.86088
-5  -0.06657  0.83636
-6   0.41375  0.16606
-7   1.12974 -0.42984
-8  -0.34583 -1.58303
-9   0.23069 -0.35177
-10  0.44318 -0.32644
 ```
 
 If the symbol name cannot be validly referred to directly, we also need to use the quotation marks to refer to the symbol.
@@ -92,7 +77,27 @@ If the symbol name cannot be validly referred to directly, we also need to use t
 ```
 
 ```
- [1]  1.2441  0.8339 -0.9536  1.9988 -0.9682  0.5971  0.2829 -1.0168
- [9] -1.7528 -1.6529
+ [1]  0.13153 -0.07892  0.88678  0.11697  0.31863 -0.58179  0.71453
+ [8] -0.82526 -0.35986  0.08989
 ```
 
+An exception is `data.frame`. Even if we use quotation marks around a name with unusual symbols, the resulted `data.frame` will replace those symbols with `.`.
+
+
+```r
+> data.frame(`a-+`=rnorm(10),`a+-`=rnorm(10))
+```
+
+```
+        a..   a...1
+1   0.76406  1.7574
+2   0.26196 -0.1379
+3   0.77340 -0.1112
+4  -0.81438 -0.6900
+5  -0.43845 -0.2218
+6  -0.72022  0.1829
+7   0.23094  0.4173
+8  -1.15773  1.0654
+9   0.24708  0.9702
+10 -0.09111 -0.1016
+```
