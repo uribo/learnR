@@ -50,9 +50,15 @@ Note that the regression includes the intercept by default. We can make it expli
 lm(sr~1+pop15+pop75+dpi+ddpi,data=LifeCycleSavings)
 ```
 
-If we need to avoid the intercept in the regression equation, we can add a negative number to the formula.
+If we need to avoid the intercept in the regression equation, we can put a zero intercept in the formula
 
 ```{r}
+lm(sr~0+pop15+pop75+dpi+ddpi,data=LifeCycleSavings)
+```
+
+or equivalently use `-1` to remove the intercept.
+
+```r
 lm(sr~pop15+pop75+dpi+ddpi-1,data=LifeCycleSavings)
 ```
 

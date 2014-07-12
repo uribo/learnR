@@ -81,21 +81,27 @@ Note that the regression includes the intercept by default. We can make it expli
 lm(sr~1+pop15+pop75+dpi+ddpi,data=LifeCycleSavings)
 ```
 
-If we need to avoid the intercept in the regression equation, we can add a negative number to the formula.
+If we need to avoid the intercept in the regression equation, we can put a zero intercept in the formula
 
 
 ```r
-> lm(sr~pop15+pop75+dpi+ddpi-1,data=LifeCycleSavings)
+> lm(sr~0+pop15+pop75+dpi+ddpi,data=LifeCycleSavings)
 ```
 
 ```
 
 Call:
-lm(formula = sr ~ pop15 + pop75 + dpi + ddpi - 1, data = LifeCycleSavings)
+lm(formula = sr ~ 0 + pop15 + pop75 + dpi + ddpi, data = LifeCycleSavings)
 
 Coefficients:
    pop15     pop75       dpi      ddpi  
 0.091723  1.713944  0.000263  0.553164  
+```
+
+or equivalently use `-1` to remove the intercept.
+
+```r
+lm(sr~pop15+pop75+dpi+ddpi-1,data=LifeCycleSavings)
 ```
 
 If there are too many regressors, it can be time-consuming to written them down. We can use `.` to represent all the resting columns.
