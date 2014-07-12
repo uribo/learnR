@@ -2,7 +2,45 @@
 
 # Object functions
 
+Previously, we learned about some low-level functions that work with the environment and packages. In this section, we will get to know some basic functions that deal with objects in general.
+
 ## Typing
+
+Although everything in R is an object, objects do have different types.
+
+Suppose  the object we are dealing with is user-defined. We create a function that behaves in different ways according to the type of the input object. For example, we need to create a function named `takeit` that takes the first element if the input object is a atomic vector, but takes user-defined element if the input object is a list of data and index.
+
+
+```r
+> takeit <- function(x) {
++   if(is.atomic(x)) {
++     x[1]
++   } else if(is.list(x)) {
++     x$data[[x$index]]
++   }
++ }
+```
+
+The above function behaves differently as `x` takes different types. When `x` takes an atomic vector (e.g. numeric vector), the function extracts its first element; when `x` takes a list of `data` and `index`, the function extracts the element with index of `index` from `x$data`.
+
+
+```r
+> takeit(c(1,2,3))
+```
+
+```
+[1] 1
+```
+
+```r
+> takeit(list(data=c(1,2,3),index=3))
+```
+
+```
+[1] 3
+```
+
+
 
 
 ```r
@@ -133,6 +171,8 @@ List of 2
  $ a: num 1
  $ b: num 2
 ```
+
+[summary table]
 
 ## Object dimensions
 
