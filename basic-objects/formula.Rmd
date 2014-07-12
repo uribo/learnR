@@ -100,6 +100,6 @@ Another example to show how different functions interpret formulas in different 
 plot(sr~ddpi,data=LifeCycleSavings)
 ```
 
-The formula to plot is interpreted as "plot `sr` as y-axis and `ddpi` as x-axis". It is consistent with our experience in mathematics when we write an equation $y = f(x)$ in which the left-hand side usually represents the y-axis, and the right-hand side the x-axis.
+The formula to plot is interpreted as *plot `sr` as y-axis and `ddpi` as x-axis*. It is consistent with our experience in mathematics when we write an equation $y = f(x)$ in which the left-hand side usually represents the y-axis, and the right-hand side the x-axis.
 
 Some functions in other packages also accept formula as an argument and the interpretation almost follow the same conventions, which makes it easy to use and learn. In later chapters, we will see how formula is used by `reshape2` package to transform data format.
