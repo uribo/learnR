@@ -24,6 +24,7 @@
     * [Object](basic-functions/object.md)
     * [Logical](basic-functions/logical.md)
     * [Character](basic-functions/character.md)
+    * [Apply-family](basic-functions/apply-family.md)
     * [Math](basic-functions/math.md)
     * [Statistics](basic-functions/statistics.md)
     * [Data](basic-functions/data.md)
