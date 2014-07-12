@@ -1,3 +1,0 @@
-# Popular packages
-
-Popular packages

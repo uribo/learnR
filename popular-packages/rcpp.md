@@ -1,5 +1,0 @@
-
-
-# Rcpp
-
-example
