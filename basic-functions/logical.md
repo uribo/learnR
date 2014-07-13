@@ -11,9 +11,9 @@ Like many other programming languages, R provides a few operators to do basic lo
 | Symbol |   Description  | Example                         | Result          |
 |--------|:--------------:|---------------------------------|-----------------|
 | `&`    | Vectorized AND | `c(TRUE,TRUE) & c(TRUE,FALSE)`  | `c(TRUE,FALSE)` |
-| `|`    |  Vectorized OR | `c(TRUE,TRUE) | c(TRUE,FALSE)`  | `c(TRUE,TRUE)`  |
+|  `\|`  |  Vectorized OR | `c(TRUE,TRUE) | c(TRUE,FALSE)`  | `c(TRUE,TRUE)`  |
 | `&&`   | Univariate AND | `c(TRUE,TRUE) && c(FALSE,TRUE)` | `FALSE`         |
-| `||`   | Univariate OR  | `c(TRUE,TRUE) || c(FALSE,TRUE)` | `TRUE`          |
+|  `||`  | Univariate OR  | `c(TRUE,TRUE) || c(FALSE,TRUE)` | `TRUE`          |
 | `!`    | Vectorized NOT | `!c(TRUE,FALSE)`                | `c(FALSE,TRUE)` |
 | `%in%` | Vectorized IN  | `c(1,2) %in% c(1,3,4,5)`        | `c(TRUE,FALSE)` |
 
