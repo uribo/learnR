@@ -271,20 +271,30 @@ Some texts have regular separator such as comma. To extract the information in t
 
 ## Formatting texts
 
+Concatenating texts with `paste()` is sometimes not a good idea because the text is broken into pieces and becomes harder to read as the format gets longer.
+
 ### sprintf
+
+In this case `sprintf()` solves the problem and provides a syntax for us to format the text parts. For example,
 
 
 ```r
-> sprintf("Hello, %s! Your number is %d., and your score is %.2f","Jack",50,35.618)
+> sprintf("name: %s, age: %d","Ken",24)
 ```
 
 ```
-[1] "Hello, Jack! Your number is 50., and your score is 35.62"
+[1] "name: Ken, age: 24"
 ```
+
+The functions requires a *format* text in which we write the text with some parts represented by place holders like `%s` and `%d`. Following the format text, we specify additional arguments as the values to replace those place holders.
+
+In the above example, `%s` stands for *string* and `%d` for *digits* (integers). The following table shows the most commonly used place holders.
+
+[table]
 
 ### rprintf package
 
-I created a package named `rprintf`. It is a set of functions that make it easier to build formatted texts in R. In addition to C-style string formatting provided by `sprintf()`, this package also provides name-based and number-based formatting. 
+I created a package named `rprintf`, an advanced version of `sprintf()`. It is a set of functions that make it easier to build formatted texts in R. In addition to C-style string formatting provided by `sprintf()`, this package also provides name-based and number-based formatting. 
 
 
 ```r
