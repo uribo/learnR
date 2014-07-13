@@ -2,56 +2,94 @@
 
 # Character functions
 
+Previously we introduced character vector that is used to deal with text data. In contrast with many other programming languages, character vector is not a vector of a bunch of characters like `a, b, c, ...` but a vector of strings.
+
+R also provides a variety of built-in functions to deal with character vector. Many of them also perform vectorized operations so that it can process numerous strings at the same time.
+
+In this section, we will know how to print, combine, and transform texts in character vectors.
+
+## Printing texts
+
+Perhaps the most basic thing we can do with texts is to view them. R provides several ways to view texts in the console.
+
+The simplest way is directly type the text
 
 ```r
-> cat("Hello, world!")
+> "Hello"
 ```
 
 ```
-Hello, world!
+[1] "Hello"
 ```
 
-```r
-> message("Hello, world!")
-```
+or the name,
 
-```
-Hello, world!
-```
 
 ```r
-> print("Hello, world!")
+> str1 <- "Hello"
+> str1
 ```
 
 ```
-[1] "Hello, world!"
+[1] "Hello"
 ```
 
-```r
-> cat("A new line\nA tab\t")
-```
+or use `print()` to explicitly print it.
 
-```
-A new line
-A tab	
-```
 
 ```r
-> message("A new line\nA tab\t")
+> print(str1)
 ```
 
 ```
-A new line
-A tab	
+[1] "Hello"
 ```
+
+then the character vector is printed out with indices.
+
+In some cases, we want the texts to appear as a message rather than a character vector with indices, we can call `cat()` or `message()`.
+
 
 ```r
-> sprintf("Hello, %s! Your number is %d., and your score is %.2f","Jack",50,35.618)
+> cat("Hello")
 ```
 
 ```
-[1] "Hello, Jack! Your number is 50., and your score is 35.62"
+Hello
 ```
+
+We can construct the the message in a flexible way.
+
+
+```r
+> name <- "Ken"
+> userof <- "R"
+> cat("Hello,",name,"- a user of",userof)
+```
+
+```
+Hello, Ken - a user of R
+```
+
+The space character is by default used as the separator between the arguments in the output, or we can change it by specifying `sep=` argument.
+
+An alternative function is `message()` which is often used in serious situations like error or important event. And the output text has more conspicuous appearance. It distincts from `cat()` in that it does not use separator.
+
+
+```r
+> message("Hello, ",name," - a user of ",user)
+```
+
+```
+Error: object 'user' not found
+```
+
+Therefore we show the same text, we need to write the separators manually.
+
+## Combining texts
+
+In practice, we often need to combine several texts to build a new one. `paste()` function works by combining several character vectors together. This function also use space as the default separator.
+
 
 ```r
 > paste("Hello","world")
@@ -69,6 +107,9 @@ A tab
 [1] "Hello-world"
 ```
 
+If we don't want the separator, we can set `sep=""` or alternatively call `paste0()`.
+
+
 ```r
 > paste0("Hello","world")
 ```
@@ -76,6 +117,53 @@ A tab
 ```
 [1] "Helloworld"
 ```
+
+The previous examples show what the functions do with single-element character vectors. What about multi-element ones?
+
+
+```r
+> paste(c("A","B"),c("C","D"))
+```
+
+```
+[1] "A C" "B D"
+```
+
+We can see that `paste()` works element-wisely, that is, `paste("A","C")` first, then `paste("B","D")`, and finally the results are collected to build a character vector of length 2.
+
+If we want the results to be put together in one string, we can specify how these two elements are connected by setting `collapse=`.
+
+
+```r
+> paste(c("A","B"),c("C","D"),collapse = ", ")
+```
+
+```
+[1] "A C, B D"
+```
+
+If we want to print such a string in multilines, we can set `collapse` to be `\n` (newline) and call `cat()`:
+
+
+```r
+> cat(paste(c("A","B"),c("C","D"),collapse = "\n"))
+```
+
+```
+A C
+B D
+```
+
+The same thing also works with `paste0()`.
+
+## Transforming texts
+
+It is easy to perform basic transformations on texts.
+
+### Changing cases
+
+`tolower()` change the texts to lower capital letters while `toupper()` does the opposite.
+
 
 ```r
 > tolower("Hello")
@@ -93,6 +181,25 @@ A tab
 [1] "HELLO"
 ```
 
+This is particularly useful when a function accepts character input. For example, we define a one-line function which returns `x+y` when `type` is `"a"` or `"A"` and `x*y` when `type` is otherwise. The best way to do it is convert `type` to lower or upper case no matter what the original value is.
+
+
+```r
+> calc <- function(x,y,type) if(tolower(type)=="a") x+y else x*y
+> c(calc(2,3,"a"),calc(2,3,"A"),calc(2,3,"q"))
+```
+
+```
+[1] 5 5 6
+```
+
+This makes the function more robust to similar and non-distinctive inputs.
+
+### Counting characters
+
+Another useful function is `nchar()` which simply counts the number of characters.
+
+
 ```r
 > nchar("Hello")
 ```
@@ -100,6 +207,19 @@ A tab
 ```
 [1] 5
 ```
+
+```r
+> nchar(c("Hello","R","User"))
+```
+
+```
+[1] 5 1 4
+```
+
+### Substring
+
+In previous chapters, we know how to subset vectors and lists. We can also subset the texts in a character vector by calling `substr()`.
+
 
 ```r
 > ch1 <- "Hello"
@@ -112,6 +232,21 @@ A tab
 
 ```r
 > substr(ch1,1,3) <- "abc"
+> ch1
+```
+
+```
+[1] "abclo"
+```
+
+`substr()` also has a counterpart function with assignment, which allows us to replace a substring of a text.
+
+### Splitting texts
+
+Some texts have regular separator such as comma. To extract the information in them, we need to spilt the texts and make each part accessible. `strsplit()` is able to split texts by specific separators in a character vector.
+
+
+```r
 > strsplit("a,bb,ccc",split = ",")
 ```
 
@@ -131,3 +266,37 @@ A tab
 [[2]]
 [1] "James"     "25"        "Economics"
 ```
+
+`strsplit()` returns a list of character vectors containing splitted parts because it works element-wisely. In fact, the function is more powerful than is shown. It also supports *regular expressions*, a very powerful framework to process text data. We will cover this topic later.
+
+## Formatting texts
+
+### sprintf
+
+
+```r
+> sprintf("Hello, %s! Your number is %d., and your score is %.2f","Jack",50,35.618)
+```
+
+```
+[1] "Hello, Jack! Your number is 50., and your score is 35.62"
+```
+
+### rprintf package
+
+I created a package named `rprintf`. It is a set of functions that make it easier to build formatted texts in R. In addition to C-style string formatting provided by `sprintf()`, this package also provides name-based and number-based formatting. 
+
+
+```r
+> library(rprintf)
+> rprintf("My name is $name, and I'm $age years old.",name="Ken",age=25)
+```
+
+```
+[1] "My name is Ken, and I'm 25 years old."
+```
+
+For more details, visit its [website](http://renkun.me/rprintf),  its page on [CRAN](http://cran.r-project.org/web/packages/rprintf/), or view the project on [GitHub](https://github.com/renkun-ken/rprintf).
+
+## Regular expressions
+
