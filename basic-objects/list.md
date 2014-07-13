@@ -383,3 +383,7 @@ If we unlist a list of numbers and texts in mixture, all members will be convert
 ```
 
 Here `a` and `b` are numbers and can be converted to character but `c` is a character vector cannot be validly convert to numbers. Therefore, their closest type that tolerates all members is character vector.
+
+## rlist package
+
+I created a package named `rlist`. It is a set of functions that make it easier to work with lists especially when they are used to store data in flexible structures. We will introduce this package in detail in the chapter of packages. You can visit its [website](http://renkun.me/rlist), see its page on [CRAN](http://cran.r-project.org/web/packages/rlist/), or view this project on [GitHub](https://github.com/renkun-ken/rlist).
