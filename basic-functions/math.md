@@ -2,110 +2,56 @@
 
 # Math functions
 
+Mathematical functions are essential in all computing environments. R also provides the basic math functions.
 
-```r
-> sin(1)
-```
+## Trigonometric functions
 
-```
-[1] 0.8415
-```
+| Symbol | Call | Value |
+|--------|------|-------|
+| $\sin(x)$ | `sin(1)` | 0.8415 |
+| $\cos(x)$ | `cos(1)` | 0.5403 |
+| $\tan(x)$ | `tan(1)` | 1.5574 |
+| $\arcsin(x)$ | `asin(1)` | 1.5708 |
+| $\arccos(x)$ | `acos(1)` | 0 |
+| $\arctan(x)$ | `atan(1)` | 0.7854 |
 
-```r
-> cos(1)
-```
+## Hyperbolic functions
 
-```
-[1] 0.5403
-```
+| Symbol | Call | Value |
+|--------|------|-------|
+| $\sinh(x)$ | `sinh(1)` | 1.1752 |
+| $\cosh(x)$ | `cosh(1)` | 1.5431 |
+| $\tanh(x)$ | `tanh(1)` | 0.7616 |
+| $\mbox{arcsinh}(x)$ | `asinh(1)` | 0.8814 |
+| $\mbox{arccosh}(x)$ | `acosh(1)` | 0 |
+| $\mbox{arctanh}(x)$ | `atanh(1)` | &infin; |
 
-```r
-> tan(1)
-```
+## Number functions
 
-```
-[1] 1.557
-```
+| Symbol | Call | Value |
+|--------|------|-------|
+| $x!$ | `factorial(5)` | 120|
+| $\lceil x\rceil$ | `ceiling(10.6)` | 11 |
+| $\lfloor x\rfloor$ | `floor(9.5)` | 9 |
+| truncate | `trunc(1.5)` | 1 |
+| round | `round(pi,3)` | 3.142 |
+| significant numbers | `signif(pi,3)` | 3.14 |
 
-```r
-> exp(-1)
-```
+## Extrema functions
 
-```
-[1] 0.3679
-```
+| Symbol | Call | Value |
+|--------|------|-------|
+| $\max(\ldots)$ | `max(1,2,3)` | 3 |
+| $\min(\ldots)$ | `min(1,2,3)` | 1 |
 
-```r
-> sinh(1)
-```
+## Root finding
 
-```
-[1] 1.175
-```
+`polyroot()` can find complex roots of a polynomial equation in the form of 
+$$ p(x) = z_1 + z_2 x + \ldots + z_n x^{n-1}.$$
 
-```r
-> cosh(1)
-```
+For example, find roots of the following equation:
+$$ 1 + 2 x + x^2 - x^3 = 0 $$
 
-```
-[1] 1.543
-```
-
-```r
-> tanh(1)
-```
-
-```
-[1] 0.7616
-```
-
-```r
-> factorial(5)
-```
-
-```
-[1] 120
-```
-
-```r
-> ceiling(10.6)
-```
-
-```
-[1] 11
-```
-
-```r
-> floor(9.5)
-```
-
-```
-[1] 9
-```
-
-```r
-> trunc(1.5)
-```
-
-```
-[1] 1
-```
-
-```r
-> round(pi,3)
-```
-
-```
-[1] 3.142
-```
-
-```r
-> signif(pi,3)
-```
-
-```
-[1] 3.14
-```
 
 ```r
 > polyroot(c(1,2,1,-1))
@@ -114,6 +60,43 @@
 ```
 [1] -0.5739+0.369i -0.5739-0.369i  2.1479-0.000i
 ```
+
+Note that all complex roots are found.
+
+As for general numeric root finding in the form $f(x)=0$, `uniroot()` function can be used to numerically find a root of that equation.
+
+For example, find a root of the equation $$x^3 - x + \cos(x) = 0$$ within the range $x\in[-5,5]$.
+
+
+```r
+> uniroot(function(x) x^3-x+cos(x),c(-5,5))
+```
+
+```
+$root
+[1] -1.16
+
+$f.root
+[1] 1.865e-05
+
+$iter
+[1] 11
+
+$init.it
+[1] NA
+
+$estim.prec
+[1] 6.104e-05
+```
+
+In the function call, we pass an *anonymous function* to `uniroot()`. We will cover this in detail in later chapters.
+
+## Calculus
+
+It is very handy to perform basic calculus. `deriv()` computes derivative of a function symbolically. 
+
+[example]
+
 
 ```r
 > f <- deriv(y~sin(cos(x)*y),c("x","y"),func=T)
@@ -127,25 +110,16 @@ attr(,"gradient")
 [1,] -0.7923 0.2544
 ```
 
+### Integration
+
+[example]
+
+
 ```r
-> l <- uniroot(function(x) x^3-x+1,c(-5,5))
-> l
+> integrate(function(x) sin(x),0,pi/2)
 ```
 
 ```
-$root
-[1] -1.325
-
-$f.root
-[1] -8.875e-06
-
-$iter
-[1] 10
-
-$init.it
-[1] NA
-
-$estim.prec
-[1] 6.104e-05
+1 with absolute error < 1.1e-14
 ```
 

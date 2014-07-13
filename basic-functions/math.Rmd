@@ -8,26 +8,88 @@ opts_chunk$set(prompt=TRUE, comment='', results='markup')
 
 # Math functions
 
-```{r}
-sin(1)
-cos(1)
-tan(1)
-exp(-1)
-sinh(1)
-cosh(1)
-tanh(1)
-factorial(5)
-ceiling(10.6)
-floor(9.5)
-trunc(1.5)
-round(pi,3)
-signif(pi,3)
+Mathematical functions are essential in all computing environments. R also provides the basic math functions.
 
+## Trigonometric functions
+
+| Symbol | Call | Value |
+|--------|------|-------|
+| $\sin(x)$ | `sin(1)` | `r sin(1)` |
+| $\cos(x)$ | `cos(1)` | `r cos(1)` |
+| $\tan(x)$ | `tan(1)` | `r tan(1)` |
+| $\arcsin(x)$ | `asin(1)` | `r asin(1)` |
+| $\arccos(x)$ | `acos(1)` | `r acos(1)` |
+| $\arctan(x)$ | `atan(1)` | `r atan(1)` |
+
+## Hyperbolic functions
+
+| Symbol | Call | Value |
+|--------|------|-------|
+| $\sinh(x)$ | `sinh(1)` | `r sinh(1)` |
+| $\cosh(x)$ | `cosh(1)` | `r cosh(1)` |
+| $\tanh(x)$ | `tanh(1)` | `r tanh(1)` |
+| $\mbox{arcsinh}(x)$ | `asinh(1)` | `r asinh(1)` |
+| $\mbox{arccosh}(x)$ | `acosh(1)` | `r acosh(1)` |
+| $\mbox{arctanh}(x)$ | `atanh(1)` | `r atanh(1)` |
+
+## Number functions
+
+| Symbol | Call | Value |
+|--------|------|-------|
+| $x!$ | `factorial(5)` | `r factorial(5)`|
+| $\lceil x\rceil$ | `ceiling(10.6)` | `r ceiling(10.6)` |
+| $\lfloor x\rfloor$ | `floor(9.5)` | `r floor(9.5)` |
+| truncate | `trunc(1.5)` | `r trunc(1.5)` |
+| round | `round(pi,3)` | `r round(pi,3)` |
+| significant numbers | `signif(pi,3)` | `r signif(pi,3)` |
+
+## Extrema functions
+
+| Symbol | Call | Value |
+|--------|------|-------|
+| $\max(\ldots)$ | `max(1,2,3)` | `r max(1,2,3)` |
+| $\min(\ldots)$ | `min(1,2,3)` | `r min(1,2,3)` |
+
+## Root finding
+
+`polyroot()` can find complex roots of a polynomial equation in the form of 
+$$ p(x) = z_1 + z_2 x + \ldots + z_n x^{n-1}.$$
+
+For example, find roots of the following equation:
+$$ 1 + 2 x + x^2 - x^3 = 0 $$
+
+```{r}
 polyroot(c(1,2,1,-1))
+```
+
+Note that all complex roots are found.
+
+As for general numeric root finding in the form $f(x)=0$, `uniroot()` function can be used to numerically find a root of that equation.
+
+For example, find a root of the equation $$x^3 - x + \cos(x) = 0$$ within the range $x\in[-5,5]$.
+
+```{r}
+uniroot(function(x) x^3-x+cos(x),c(-5,5))
+```
+
+In the function call, we pass an *anonymous function* to `uniroot()`. We will cover this in detail in later chapters.
+
+## Calculus
+
+It is very handy to perform basic calculus. `deriv()` computes derivative of a function symbolically. 
+
+[example]
+
+```{r}
 f <- deriv(y~sin(cos(x)*y),c("x","y"),func=T)
 f(1,2)
+```
 
-l <- uniroot(function(x) x^3-x+1,c(-5,5))
-l
+### Integration
+
+[example]
+
+```{r}
+integrate(function(x) sin(x),0,pi/2)
 ```
 
