@@ -3,10 +3,35 @@ opts_knit$set(base.dir='./', fig.path='', out.format='md')
 opts_chunk$set(prompt=TRUE, comment='', results='markup')
 # See yihui.name/knitr/options for more Knitr options.
 ##### Put other setup R code here
-
+set.seed(100)
 ```
 
 # Statistical functions
+
+
+
+## Random sampling
+
+```{r}
+sample(c(1,2,3),size = 2,replace = FALSE)
+sample(c("a","b","z"),size = 10, replace = TRUE)
+```
+
+
+## Statistical distributions
+
+```{r}
+rnorm(20,mean = 10,sd = 2)
+rbinom(20,size = 10,prob = 0.6)
+runif(20)
+runif(20,min = 10,max = 20)
+rgamma(20,shape = 0.5)
+
+plot(dnorm,xlim=c(-3,3))
+plot(pnorm,xlim=c(-3,3))
+```
+
+## Summary statistics
 
 ```{r}
 x.norm <- rnorm(20)
@@ -19,19 +44,13 @@ min(x.norm)
 pmax(c(1,2,3),c(2,3,1))
 pmin(c(1,2,3),c(2,3,1),c(3,2,1))
 summary(x.norm)
+```
 
 
-set.seed(100)
-sample(c(1,2,3),size = 2,replace = FALSE)
-sample(c("a","b","z"),size = 10, replace = TRUE)
-rnorm(20,mean = 10,sd = 2)
-rbinom(20,size = 10,prob = 0.6)
-runif(20)
-runif(20,min = 10,max = 20)
-rgamma(20,shape = 0.5)
+## Statistical tests
 
-plot(dnorm,xlim=c(-3,3))
-plot(pnorm,xlim=c(-3,3))
+
+```{r}
 qnorm(c(0.01,0.99))
 
 table(sample(letters[1:3],100,T))
