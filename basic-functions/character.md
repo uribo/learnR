@@ -288,9 +288,34 @@ In this case `sprintf()` solves the problem and provides a syntax for us to form
 
 The functions requires a *format* text in which we write the text with some parts represented by place holders like `%s` and `%d`. Following the format text, we specify additional arguments as the values to replace those place holders.
 
-In the above example, `%s` stands for *string* and `%d` for *digits* (integers). The following table shows the most commonly used place holders.
+In the above example, `%s` stands for *string* and `%d` for *digits* (integers). More than representing different types of strings, the format is able to incorporate a uniform formatting syntax. The following table shows the most commonly used syntax.
 
-[table]
+| Format | Output |
+|--------|--------|
+| `sprintf("%s","A")` | A |
+| `sprintf("%d",10)` | 10 |
+| `sprintf("%8d",10)` |       10 |
+| `sprintf("%04d",10)` | 0010 |
+| `sprintf("%f",pi)` | 3.141593 |
+| `sprintf("%.2f",pi)` | 3.14 |
+| `sprintf("%1.0f",pi)` | 3 |
+| `sprintf("%8.2f",pi)` |     3.14 |
+| `sprintf("%08.2f",pi)` | 00003.14 |
+| `sprintf("%+f",pi)` | +3.141593 |
+| `sprintf("% f",pi)` |  3.141593 |
+| `sprintf("%e",pi)` | 3.141593e+00 |
+| `sprintf("%E",pi)` | 3.141593E+00 |
+
+`%` in the format text is a special character and will be interpreted as the initial character of a place holder. What if we really mean `%` in the string? To avoid such interpretation, we need to use `%%` to represent a single `%`. The following code is an example.
+
+
+```r
+> sprintf("The ratio is %d%%",10)
+```
+
+```
+[1] "The ratio is 10%"
+```
 
 ### rprintf package
 
