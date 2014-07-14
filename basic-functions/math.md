@@ -93,26 +93,51 @@ In the function call, we pass an *anonymous function* to `uniroot()`. We will co
 
 ## Calculus
 
-It is very handy to perform basic calculus. `deriv()` computes derivative of a function symbolically. 
+It is very handy to perform basic calculus. 
 
-[example]
+### Derivatives
+
+`D()` computes the derivative of a function symbolically with respect to given variables. 
+
+For example, derive $\mbox{d}x^{2}/\mbox{d}x$.
 
 
 ```r
-> f <- deriv(y~sin(cos(x)*y),c("x","y"),func=T)
-> f(1,2)
+> D(expression(x^2),"x")
 ```
 
 ```
-[1] 0.8822
-attr(,"gradient")
-           x      y
-[1,] -0.7923 0.2544
+2 * x
+```
+
+Derive $\mbox{d}\sin(x)\cos(xy)/\mbox{d}x$.
+
+
+```r
+> D(expression(sin(x)*cos(x*y)),"x")
+```
+
+```
+cos(x) * cos(x * y) - sin(x) * (sin(x * y) * y)
+```
+
+Thanks to the `expression()` function that keeps the expression unevaluated so that the symbols are directly accessible. Expression object gives R the power of meta-programming. We will cover this topic in advanced chapters.
+
+Since the derivative is also an unevaluated expression, we can evaluate it given all necessary symbols by calling `eval()`.
+
+
+```r
+> z <- D(expression(sin(x)*cos(x*y)),"x")
+> eval(z,list(x=1,y=2))
+```
+
+```
+[1] -1.755
 ```
 
 ### Integration
 
-[example]
+R also supports numeric integration. Here we do not have to write the expression but provide a function since it is not symbolic computation. For example, the following code calculates $$\int_{0}^{\frac{\pi}{2}}\sin(x)\,\mbox{d}x.$$
 
 
 ```r
@@ -123,3 +148,4 @@ attr(,"gradient")
 1 with absolute error < 1.1e-14
 ```
 
+Since its numerical computation, it inherits all the pros and cons of such computing technique.
