@@ -243,7 +243,7 @@ In previous chapters, we know how to subset vectors and lists. We can also subse
 
 ### Splitting texts
 
-Some texts have regular separator such as comma. To extract the information in them, we need to spilt the texts and make each part accessible. `strsplit()` is able to split texts by specific separators in a character vector.
+Some texts have regular separator such as comma. To extract the information in them, we need to split the texts and make each part accessible. `strsplit()` is able to split texts by specific separators in a character vector.
 
 
 ```r
@@ -294,7 +294,6 @@ In the above example, `%s` stands for *string* and `%d` for *digits* (integers).
 |--------|--------|
 | `sprintf("%s","A")` | A |
 | `sprintf("%d",10)` | 10 |
-| `sprintf("%8d",10)` |       10 |
 | `sprintf("%04d",10)` | 0010 |
 | `sprintf("%f",pi)` | 3.141593 |
 | `sprintf("%.2f",pi)` | 3.14 |
@@ -302,7 +301,6 @@ In the above example, `%s` stands for *string* and `%d` for *digits* (integers).
 | `sprintf("%8.2f",pi)` |     3.14 |
 | `sprintf("%08.2f",pi)` | 00003.14 |
 | `sprintf("%+f",pi)` | +3.141593 |
-| `sprintf("% f",pi)` |  3.141593 |
 | `sprintf("%e",pi)` | 3.141593e+00 |
 | `sprintf("%E",pi)` | 3.141593E+00 |
 
