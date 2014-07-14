@@ -3,83 +3,11 @@
 # Statistical functions
 
 
-```r
-> x.norm <- rnorm(20)
-> mean(x.norm)
-```
 
-```
-[1] -0.1184
-```
+## Random sampling
+
 
 ```r
-> sd(x.norm)
-```
-
-```
-[1] 1.257
-```
-
-```r
-> median(x.norm)
-```
-
-```
-[1] -0.4252
-```
-
-```r
-> quantile(x.norm,probs = c(0.5,0.8))
-```
-
-```
-    50%     80% 
--0.4252  0.7948 
-```
-
-```r
-> max(x.norm)
-```
-
-```
-[1] 2.757
-```
-
-```r
-> min(x.norm)
-```
-
-```
-[1] -1.979
-```
-
-```r
-> pmax(c(1,2,3),c(2,3,1))
-```
-
-```
-[1] 2 3 3
-```
-
-```r
-> pmin(c(1,2,3),c(2,3,1),c(3,2,1))
-```
-
-```
-[1] 1 2 1
-```
-
-```r
-> summary(x.norm)
-```
-
-```
-   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
- -1.980  -0.776  -0.425  -0.118   0.736   2.760 
-```
-
-```r
-> set.seed(100)
 > sample(c(1,2,3),size = 2,replace = FALSE)
 ```
 
@@ -94,6 +22,10 @@
 ```
  [1] "b" "a" "b" "b" "z" "b" "b" "a" "b" "z"
 ```
+
+
+## Statistical distributions
+
 
 ```r
 > rnorm(20,mean = 10,sd = 2)
@@ -145,13 +77,96 @@
 > plot(dnorm,xlim=c(-3,3))
 ```
 
-![plot of chunk unnamed-chunk-1](figure/unnamed-chunk-11.png) 
+![plot of chunk unnamed-chunk-2](figure/unnamed-chunk-21.png) 
 
 ```r
 > plot(pnorm,xlim=c(-3,3))
 ```
 
-![plot of chunk unnamed-chunk-1](figure/unnamed-chunk-12.png) 
+![plot of chunk unnamed-chunk-2](figure/unnamed-chunk-22.png) 
+
+## Summary statistics
+
+
+```r
+> x.norm <- rnorm(20)
+> mean(x.norm)
+```
+
+```
+[1] -0.1006
+```
+
+```r
+> sd(x.norm)
+```
+
+```
+[1] 1.103
+```
+
+```r
+> median(x.norm)
+```
+
+```
+[1] -0.4347
+```
+
+```r
+> quantile(x.norm,probs = c(0.5,0.8))
+```
+
+```
+    50%     80% 
+-0.4347  0.9469 
+```
+
+```r
+> max(x.norm)
+```
+
+```
+[1] 2.446
+```
+
+```r
+> min(x.norm)
+```
+
+```
+[1] -1.458
+```
+
+```r
+> pmax(c(1,2,3),c(2,3,1))
+```
+
+```
+[1] 2 3 3
+```
+
+```r
+> pmin(c(1,2,3),c(2,3,1),c(3,2,1))
+```
+
+```
+[1] 1 2 1
+```
+
+```r
+> summary(x.norm)
+```
+
+```
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+ -1.460  -0.848  -0.435  -0.101   0.521   2.450 
+```
+
+
+## Statistical tests
+
+
 
 ```r
 > qnorm(c(0.01,0.99))
@@ -168,7 +183,7 @@
 ```
 
  a  b  c 
-31 31 38 
+28 38 34 
 ```
 
 ```r
@@ -178,8 +193,8 @@
 ```
    
      A  B  C  D
-  a  3  6  9  9
-  b 10 15  9 12
-  c  5 11  7  4
+  a  6  7  7  9
+  b  9 15 10  9
+  c  7 10  5  6
 ```
 
