@@ -8,17 +8,36 @@ set.seed(100)
 
 # Statistical functions
 
-
+As a statistical computing environment, R provides a variety of easy-to-use statistical functions from random sampling to statistical tests. Although these built-in functions are limited, they are sufficient to handle many basic statistical problems.
 
 ## Random sampling
 
+Random sampling is perhaps the first step of answering most statisitical questions on a population. Given a vector or a list, `sample()` function draws a sample from it with or without replacement.
+
+For example, draw a sample of size 2 from a numeric vector without replacement.
+
 ```{r}
-sample(c(1,2,3),size = 2,replace = FALSE)
-sample(c("a","b","z"),size = 10, replace = TRUE)
+sample(c(1,2,3),size=2,replace=FALSE)
+```
+
+Another example, draw a sample of size 10 from a character vector with replacement.
+
+```{r}
+sample(c("a","b","z"),size=10,replace=TRUE)
+```
+
+`sample()` also supports unequal weights over each observation while sampling.
+
+```{r}
+sample(c("Good","Medium","Poor"),size=10,replace=TRUE,prob=c(0.1,0.8,0.1))
 ```
 
 
-## Statistical distributions
+## Sampling from distributions
+
+Instead of drawing samples from a given vector, R also provides a set of functions to draw random samples from the most popular probability distributions.
+
+
 
 ```{r}
 rnorm(20,mean = 10,sd = 2)
