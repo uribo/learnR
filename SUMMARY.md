@@ -57,7 +57,6 @@
     * [Functions](inside-r/functions.md)
     * [Environment](inside-r/environment.md)
     * [Expression](inside-r/expression.md)
-    * [Call](inside-r/call.md)
 * [Data structures](data-structures/README.md)
     * [S3 object](data-structures/s3-object.md)
     * [S4 object](data-structures/s4-object.md)    
