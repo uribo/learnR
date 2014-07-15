@@ -6,6 +6,6 @@ opts_chunk$set(prompt=TRUE, comment='', results='markup')
 
 ```
 
-# Example
+# Dot-dot-dot
 
 example

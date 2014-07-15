@@ -1,6 +1,5 @@
 
 
-
 # Dynamic scoping
 
 example
