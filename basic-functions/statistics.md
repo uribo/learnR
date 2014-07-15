@@ -2,29 +2,52 @@
 
 # Statistical functions
 
-
+As a statistical computing environment, R provides a variety of easy-to-use statistical functions from random sampling to statistical tests. Although these built-in functions are limited, they are sufficient to handle many basic statistical problems.
 
 ## Random sampling
 
+Random sampling is perhaps the first step of answering most statisitical questions on a population. Given a vector or a list, `sample()` function draws a sample from it with or without replacement.
+
+For example, draw a sample of size 2 from a numeric vector without replacement.
+
 
 ```r
-> sample(c(1,2,3),size = 2,replace = FALSE)
+> sample(c(1,2,3),size=2,replace=FALSE)
 ```
 
 ```
 [1] 1 3
 ```
 
+Another example, draw a sample of size 10 from a character vector with replacement.
+
+
 ```r
-> sample(c("a","b","z"),size = 10, replace = TRUE)
+> sample(c("a","b","z"),size=10,replace=TRUE)
 ```
 
 ```
  [1] "b" "a" "b" "b" "z" "b" "b" "a" "b" "z"
 ```
 
+`sample()` also supports unequal weights over each observation while sampling.
 
-## Statistical distributions
+
+```r
+> sample(c("Good","Medium","Poor"),size=10,replace=TRUE,prob=c(0.1,0.8,0.1))
+```
+
+```
+ [1] "Medium" "Medium" "Medium" "Medium" "Medium" "Medium" "Medium"
+ [8] "Medium" "Medium" "Medium"
+```
+
+
+## Sampling from distributions
+
+Instead of drawing samples from a given vector, R also provides a set of functions to draw random samples from the most popular probability distributions.
+
+
 
 
 ```r
@@ -32,8 +55,8 @@
 ```
 
 ```
- [1]  8.836 11.429  8.349  9.280 10.180 10.193  9.597 11.480 10.247  9.941
-[11]  9.222 11.022  8.172 14.621  9.124 11.528 10.524 11.547  8.371  9.123
+ [1] 10.193  9.597 11.480 10.247  9.941  9.222 11.022  8.172 14.621  9.124
+[11] 11.528 10.524 11.547  8.371  9.123  8.560 10.462  7.685 10.494  9.818
 ```
 
 ```r
@@ -41,7 +64,7 @@
 ```
 
 ```
- [1] 7 7 6 7 8 7 6 7 6 5 3 5 6 7 6 6 7 5 6 7
+ [1] 3 5 6 7 6 6 7 5 6 7 6 3 5 6 4 5 4 8 6 6
 ```
 
 ```r
@@ -49,9 +72,9 @@
 ```
 
 ```
- [1] 0.57256 0.96700 0.66178 0.62470 0.85665 0.77478 0.83403 0.09151
- [9] 0.45953 0.59940 0.91972 0.98282 0.03780 0.57794 0.73331 0.24874
-[17] 0.30074 0.73347 0.90695 0.20982
+ [1] 0.91972 0.98282 0.03780 0.57794 0.73331 0.24874 0.30074 0.73347
+ [9] 0.90695 0.20982 0.35814 0.44830 0.90643 0.38944 0.51746 0.12524
+[17] 0.03015 0.77181 0.32742 0.38948
 ```
 
 ```r
@@ -59,8 +82,8 @@
 ```
 
 ```
- [1] 13.58 14.48 19.06 13.89 15.17 11.25 10.30 17.72 13.27 13.89 10.41
-[12] 13.61 15.71 16.85 19.71 17.02 10.12 15.36 18.37 18.07
+ [1] 10.41 13.61 15.71 16.85 19.71 17.02 10.12 15.36 18.37 18.07 10.81
+[12] 12.39 19.66 10.38 19.16 17.26 12.01 18.40 13.97 13.93
 ```
 
 ```r
@@ -68,22 +91,22 @@
 ```
 
 ```
- [1] 0.0091814 1.6197939 0.0565046 0.2205470 0.1740602 0.4265680 0.0793420
- [8] 0.4714080 0.3124512 0.6353470 0.0288982 2.1413096 0.0005384 0.5158260
-[15] 0.0005071 0.3230394 0.0111670 0.0010014 0.4807671 0.8817755
+ [1] 0.1740602 0.4265680 0.0793420 0.4714080 0.3124512 0.6353470 0.0288982
+ [8] 2.1413096 0.0005384 0.5158260 0.0005071 0.3230394 0.0111670 0.0010014
+[15] 0.4807671 0.8817755 0.1168473 1.7071300 0.0484624 0.0213860
 ```
 
 ```r
 > plot(dnorm,xlim=c(-3,3))
 ```
 
-![plot of chunk unnamed-chunk-2](figure/unnamed-chunk-21.png) 
+![plot of chunk unnamed-chunk-4](figure/unnamed-chunk-41.png) 
 
 ```r
 > plot(pnorm,xlim=c(-3,3))
 ```
 
-![plot of chunk unnamed-chunk-2](figure/unnamed-chunk-22.png) 
+![plot of chunk unnamed-chunk-4](figure/unnamed-chunk-42.png) 
 
 ## Summary statistics
 
@@ -94,7 +117,7 @@
 ```
 
 ```
-[1] -0.1006
+[1] -0.137
 ```
 
 ```r
@@ -102,7 +125,7 @@
 ```
 
 ```
-[1] 1.103
+[1] 1.009
 ```
 
 ```r
@@ -110,7 +133,7 @@
 ```
 
 ```
-[1] -0.4347
+[1] -0.3511
 ```
 
 ```r
@@ -119,7 +142,7 @@
 
 ```
     50%     80% 
--0.4347  0.9469 
+-0.3511  0.4994 
 ```
 
 ```r
@@ -160,7 +183,7 @@
 
 ```
    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
- -1.460  -0.848  -0.435  -0.101   0.521   2.450 
+ -1.460  -0.790  -0.351  -0.137   0.294   2.450 
 ```
 
 
@@ -183,7 +206,7 @@
 ```
 
  a  b  c 
-28 38 34 
+23 40 37 
 ```
 
 ```r
@@ -193,8 +216,8 @@
 ```
    
      A  B  C  D
-  a  6  7  7  9
-  b  9 15 10  9
-  c  7 10  5  6
+  a  9  7  8 10
+  b  7 16  8  7
+  c  5 10  7  6
 ```
 
