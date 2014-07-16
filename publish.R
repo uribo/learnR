@@ -1,2 +1,1 @@
-library(Rgitbook)
-buildGitbook()
+Rgitbook::buildGitbook()
