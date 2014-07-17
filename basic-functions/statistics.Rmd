@@ -89,9 +89,39 @@ plot(pnorm,xlim=c(-5,5),main="pnorm")
 plot(qnorm,xlim=c(0,1),main="qnorm")
 ```
 
-Here it is obvious that R defines 4 functions for each distribution it supports. The following table covers all the distributions it supports.
+Here it is obvious that R defines 4 functions for each distribution it supports. 
 
-[table]
+### Table of supported distributions
+
+The following list contains all built-in distributions and their corresponding random number generating function. 
+
+```{r,echo=FALSE}
+funcall <- function(fun) {
+  deparse(as.call(c(substitute(fun),formals(fun))))
+}
+```
+
+| Distribution | Random number generator |
+|:------------:|-------------------------|
+| [Beta distribution](//en.wikipedia.org/wiki/Beta_distribution) | ``r funcall(rbeta)`` |
+| [Binomial distribution](//en.wikipedia.org/wiki/Binomial_distribution) | ``r funcall(rbinom)`` |
+| [Cauchy distribution](//en.wikipedia.org/wiki/Cauchy_distribution) | ``r funcall(rcauchy) `` |
+| [Chi-squared distribution](//en.wikipedia.org/wiki/Chi-squared_distribution) | ``r funcall(rchisq)`` |
+| [Exponential distribution](//en.wikipedia.org/wiki/Exponential_distribution) | ``r funcall(rexp)`` |
+| [F distribution](//en.wikipedia.org/wiki/F-distribution) | ``r funcall(df)`` |
+| [Gamma distribution](//en.wikipedia.org/wiki/Gamma_distribution) | ``r funcall(rgamma)`` |
+| [Geometric distribution](//en.wikipedia.org/wiki/Geometric_distribution) | ``r funcall(rgeom)`` |
+| [Hypergeometric distribution](//en.wikipedia.org/wiki/Hypergeometric_distribution) | ``r funcall(rhyper)`` |
+| [Log-normal distribution](//en.wikipedia.org/wiki/Log-normal_distribution) | ``r funcall(rlnorm)`` |
+| [Multinomial distribution](//en.wikipedia.org/wiki/Multinomial_distribution) | ``r funcall(rmultinom)`` |
+| [negative binomial distribution](//en.wikipedia.org/wiki/Negative_binomial_distribution) | ``r funcall(rnbinom)`` |
+| [Normal distribution](//en.wikipedia.org/wiki/Normal_distribution) | ``r funcall(rnorm)`` |
+| [Poisson distribution](//en.wikipedia.org/wiki/Poisson_distribution) | ``r funcall(rpois)`` |
+| [Student's $t$ distribution](//en.wikipedia.org/wiki/Student's_t-distribution) | ``r funcall(rt)`` |
+| [Uniform distribution](//en.wikipedia.org/wiki/Uniform_distribution_%28continuous%29) | ``r funcall(runif)`` |
+| [Weibull distribution](//en.wikipedia.org/wiki/Weibull_distribution) | ``r funcall(rweibull)`` |
+
+The density functions, probability functions, and quantile functions for the above distributions can be easily figured out by following the naming conventions that `rxxx` stands for random numeric generator, `dxxx` for density function, `pxxx` for probability function, and `qxxx` for quantile function.
 
 ## Summary statistics
 

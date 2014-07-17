@@ -109,9 +109,35 @@ In addition to the random number generator for normal distribution, R also provi
 
 ![plot of chunk norm](figure/norm.png) 
 
-Here it is obvious that R defines 4 functions for each distribution it supports. The following table covers all the distributions it supports.
+Here it is obvious that R defines 4 functions for each distribution it supports. 
 
-[table]
+### Table of supported distributions
+
+The following list contains all built-in distributions and their corresponding random number generating function. 
+
+
+
+| Distribution | Random number generator |
+|:------------:|-------------------------|
+| [Beta distribution](//en.wikipedia.org/wiki/Beta_distribution) | `rbeta(n = , shape1 = , shape2 = , ncp = 0)` |
+| [Binomial distribution](//en.wikipedia.org/wiki/Binomial_distribution) | `rbinom(n = , size = , prob = )` |
+| [Cauchy distribution](//en.wikipedia.org/wiki/Cauchy_distribution) | `rcauchy(n = , location = 0, scale = 1)` |
+| [Chi-squared distribution](//en.wikipedia.org/wiki/Chi-squared_distribution) | `rchisq(n = , df = , ncp = 0)` |
+| [Exponential distribution](//en.wikipedia.org/wiki/Exponential_distribution) | `rexp(n = , rate = 1)` |
+| [F distribution](//en.wikipedia.org/wiki/F-distribution) | `df(x = , df1 = , df2 = , ncp = , log = FALSE)` |
+| [Gamma distribution](//en.wikipedia.org/wiki/Gamma_distribution) | `rgamma(n = , shape = , rate = 1, scale = 1/rate)` |
+| [Geometric distribution](//en.wikipedia.org/wiki/Geometric_distribution) | `rgeom(n = , prob = )` |
+| [Hypergeometric distribution](//en.wikipedia.org/wiki/Hypergeometric_distribution) | `rhyper(nn = , m = , n = , k = )` |
+| [Log-normal distribution](//en.wikipedia.org/wiki/Log-normal_distribution) | `rlnorm(n = , meanlog = 0, sdlog = 1)` |
+| [Multinomial distribution](//en.wikipedia.org/wiki/Multinomial_distribution) | `rmultinom(n = , size = , prob = )` |
+| [negative binomial distribution](//en.wikipedia.org/wiki/Negative_binomial_distribution) | `rnbinom(n = , size = , prob = , mu = )` |
+| [Normal distribution](//en.wikipedia.org/wiki/Normal_distribution) | `rnorm(n = , mean = 0, sd = 1)` |
+| [Poisson distribution](//en.wikipedia.org/wiki/Poisson_distribution) | `rpois(n = , lambda = )` |
+| [Student's $t$ distribution](//en.wikipedia.org/wiki/Student's_t-distribution) | `rt(n = , df = , ncp = )` |
+| [Uniform distribution](//en.wikipedia.org/wiki/Uniform_distribution_%28continuous%29) | `runif(n = , min = 0, max = 1)` |
+| [Weibull distribution](//en.wikipedia.org/wiki/Weibull_distribution) | `rweibull(n = , shape = , scale = 1)` |
+
+The density functions, probability functions, and quantile functions for the above distributions can be easily figured out by following the naming conventions that `rxxx` stands for random numeric generator, `dxxx` for density function, `pxxx` for probability function, and `qxxx` for quantile function.
 
 ## Summary statistics
 
