@@ -12,7 +12,7 @@ For example, draw a sample of size 2 from a numeric vector without replacement.
 
 
 ```r
-> sample(c(1,2,3),size=2,replace=FALSE)
+sample(c(1,2,3),size=2,replace=FALSE)
 ```
 
 ```
@@ -23,7 +23,7 @@ Another example, draw a sample of size 10 from a character vector with replaceme
 
 
 ```r
-> sample(c("a","b","z"),size=10,replace=TRUE)
+sample(c("a","b","z"),size=10,replace=TRUE)
 ```
 
 ```
@@ -34,7 +34,7 @@ Another example, draw a sample of size 10 from a character vector with replaceme
 
 
 ```r
-> sample(c("Good","Medium","Poor"),size=10,replace=TRUE,prob=c(0.1,0.8,0.1))
+sample(c("Good","Medium","Poor"),size=10,replace=TRUE,prob=c(0.1,0.8,0.1))
 ```
 
 ```
@@ -45,124 +45,129 @@ Another example, draw a sample of size 10 from a character vector with replaceme
 
 ## Sampling from distributions
 
-Instead of drawing samples from a given vector, R also provides a set of functions to draw random samples from the most popular probability distributions.
+Instead of drawing samples from a given vector or list, R also provides a set of functions to draw random samples from popular probability distributions.
 
+### Uniform distribution
 
+Uniform distribution is the simplest random distribution. Under uniform distribution, it is equally probable to draw any value out of a given range. To produce such a random sample, we can call
 
 
 ```r
-> rnorm(20,mean = 10,sd = 2)
+runif(10)
 ```
 
 ```
- [1] 10.193  9.597 11.480 10.247  9.941  9.222 11.022  8.172 14.621  9.124
-[11] 11.528 10.524 11.547  8.371  9.123  8.560 10.462  7.685 10.494  9.818
+ [1] 0.5383 0.7490 0.4201 0.1714 0.7703 0.8820 0.5491 0.2777 0.4883 0.9285
 ```
 
-```r
-> rbinom(20,size = 10,prob = 0.6)
-```
+A random sample of size 10, represented by a numeric vector, is drawn from the uniform distribution with range $[0,1]$. To customize the range, we can specify `min=` and `max=` arguments 
 
-```
- [1] 3 5 6 7 6 6 7 5 6 7 6 3 5 6 4 5 4 8 6 6
-```
 
 ```r
-> runif(20)
+runif(10,min = -5,max = 5)
 ```
 
 ```
- [1] 0.91972 0.98282 0.03780 0.57794 0.73331 0.24874 0.30074 0.73347
- [9] 0.90695 0.20982 0.35814 0.44830 0.90643 0.38944 0.51746 0.12524
-[17] 0.03015 0.77181 0.32742 0.38948
+ [1] -1.513  4.542  1.953  3.895 -3.196  1.294  4.896 -3.697 -1.693  3.651
 ```
 
-```r
-> runif(20,min = 10,max = 20)
-```
+so that another sample uniformly distributed within $[-5,5]$ is drawn.
 
-```
- [1] 10.41 13.61 15.71 16.85 19.71 17.02 10.12 15.36 18.37 18.07 10.81
-[12] 12.39 19.66 10.38 19.16 17.26 12.01 18.40 13.97 13.93
-```
+In addition to a simple random number generator, some relavent functions are also provided, including the probability density function `dunif()`, the cumulative density function `punif()`, and quantile function `qunif()`.
 
-```r
-> rgamma(20,shape = 0.5)
-```
+![plot of chunk unif](figure/unif.png) 
 
-```
- [1] 0.1740602 0.4265680 0.0793420 0.4714080 0.3124512 0.6353470 0.0288982
- [8] 2.1413096 0.0005384 0.5158260 0.0005071 0.3230394 0.0111670 0.0010014
-[15] 0.4807671 0.8817755 0.1168473 1.7071300 0.0484624 0.0213860
-```
+### Normal distribution
+
+Maybe the most commonly seen random distribution in real world is the normal distribution. The way to draw normally distributed samples is almost the same with sampling from a uniform distribution. The names of the functions follow the same rules so that we don't have to remember too much.
+
+For example, generate a sample of size 10 from standard normal distribution, that is, with zero mean and unit variance.
+
 
 ```r
-> plot(dnorm,xlim=c(-3,3))
+rnorm(10)
 ```
 
-![plot of chunk unnamed-chunk-4](figure/unnamed-chunk-41.png) 
+```
+ [1]  0.99795  0.80107  0.82010 -0.09279 -0.31225  1.93903 -0.68048
+ [8] -0.04908  0.12001 -1.30859
+```
+
+To draw sample from non-standard distribution, we only have to specify the two parameters `mean=` for mean and `sd=` for standard deviation.
+
 
 ```r
-> plot(pnorm,xlim=c(-3,3))
+rnorm(10,mean = 10,sd = 5)
 ```
 
-![plot of chunk unnamed-chunk-4](figure/unnamed-chunk-42.png) 
+```
+ [1] 12.9628  4.7981  4.0237  0.8229 10.4808 10.9533 11.8074 14.6700
+ [9]  5.7354  8.0848
+```
+
+In addition to the random number generator for normal distribution, R also provides with its probability density function `dnorm()`, cumulative density function `pnorm()`, and quantile function `qnorm()`.
+
+![plot of chunk norm](figure/norm.png) 
+
+Here it is obvious that R defines 4 functions for each distribution it supports. The following table covers all the distributions it supports.
+
+[table]
 
 ## Summary statistics
 
 
 ```r
-> x.norm <- rnorm(20)
-> mean(x.norm)
+x.norm <- rnorm(20)
+mean(x.norm)
 ```
 
 ```
-[1] -0.137
-```
-
-```r
-> sd(x.norm)
-```
-
-```
-[1] 1.009
+[1] 0.01595
 ```
 
 ```r
-> median(x.norm)
+sd(x.norm)
 ```
 
 ```
-[1] -0.3511
-```
-
-```r
-> quantile(x.norm,probs = c(0.5,0.8))
-```
-
-```
-    50%     80% 
--0.3511  0.4994 
+[1] 1.375
 ```
 
 ```r
-> max(x.norm)
+median(x.norm)
 ```
 
 ```
-[1] 2.446
-```
-
-```r
-> min(x.norm)
-```
-
-```
-[1] -1.458
+[1] -0.263
 ```
 
 ```r
-> pmax(c(1,2,3),c(2,3,1))
+quantile(x.norm,probs = c(0.5,0.8))
+```
+
+```
+   50%    80% 
+-0.263  1.563 
+```
+
+```r
+max(x.norm)
+```
+
+```
+[1] 2.47
+```
+
+```r
+min(x.norm)
+```
+
+```
+[1] -2.708
+```
+
+```r
+pmax(c(1,2,3),c(2,3,1))
 ```
 
 ```
@@ -170,7 +175,7 @@ Instead of drawing samples from a given vector, R also provides a set of functio
 ```
 
 ```r
-> pmin(c(1,2,3),c(2,3,1),c(3,2,1))
+pmin(c(1,2,3),c(2,3,1),c(3,2,1))
 ```
 
 ```
@@ -178,12 +183,12 @@ Instead of drawing samples from a given vector, R also provides a set of functio
 ```
 
 ```r
-> summary(x.norm)
+summary(x.norm)
 ```
 
 ```
    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
- -1.460  -0.790  -0.351  -0.137   0.294   2.450 
+-2.7100 -0.9080 -0.2630  0.0159  1.0500  2.4700 
 ```
 
 
@@ -192,7 +197,7 @@ Instead of drawing samples from a given vector, R also provides a set of functio
 
 
 ```r
-> qnorm(c(0.01,0.99))
+qnorm(c(0.01,0.99))
 ```
 
 ```
@@ -200,24 +205,24 @@ Instead of drawing samples from a given vector, R also provides a set of functio
 ```
 
 ```r
-> table(sample(letters[1:3],100,T))
+table(sample(letters[1:3],100,T))
 ```
 
 ```
 
  a  b  c 
-23 40 37 
+42 22 36 
 ```
 
 ```r
-> table(sample(letters[1:3],100,T),sample(LETTERS[1:4],100,T))
+table(sample(letters[1:3],100,T),sample(LETTERS[1:4],100,T))
 ```
 
 ```
    
      A  B  C  D
-  a  9  7  8 10
-  b  7 16  8  7
-  c  5 10  7  6
+  a  7  7 13  4
+  b  7 15  8  5
+  c  4 14 11  5
 ```
 

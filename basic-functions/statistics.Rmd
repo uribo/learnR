@@ -1,6 +1,6 @@
 ```{r knitsetup, echo=FALSE, results='hide', warning=FALSE, message=FALSE, cache=FALSE}
 opts_knit$set(base.dir='./', fig.path='', out.format='md')
-opts_chunk$set(prompt=TRUE, comment='', results='markup')
+opts_chunk$set(prompt=FALSE, comment='', results='markup')
 # See yihui.name/knitr/options for more Knitr options.
 ##### Put other setup R code here
 set.seed(100)
@@ -35,20 +35,63 @@ sample(c("Good","Medium","Poor"),size=10,replace=TRUE,prob=c(0.1,0.8,0.1))
 
 ## Sampling from distributions
 
-Instead of drawing samples from a given vector, R also provides a set of functions to draw random samples from the most popular probability distributions.
+Instead of drawing samples from a given vector or list, R also provides a set of functions to draw random samples from popular probability distributions.
 
+### Uniform distribution
 
+Uniform distribution is the simplest random distribution. Under uniform distribution, it is equally probable to draw any value out of a given range. To produce such a random sample, we can call
 
 ```{r}
-rnorm(20,mean = 10,sd = 2)
-rbinom(20,size = 10,prob = 0.6)
-runif(20)
-runif(20,min = 10,max = 20)
-rgamma(20,shape = 0.5)
-
-plot(dnorm,xlim=c(-3,3))
-plot(pnorm,xlim=c(-3,3))
+runif(10)
 ```
+
+A random sample of size 10, represented by a numeric vector, is drawn from the uniform distribution with range $[0,1]$. To customize the range, we can specify `min=` and `max=` arguments 
+
+```{r}
+runif(10,min = -5,max = 5)
+```
+
+so that another sample uniformly distributed within $[-5,5]$ is drawn.
+
+In addition to a simple random number generator, some relavent functions are also provided, including the probability density function `dunif()`, the cumulative density function `punif()`, and quantile function `qunif()`.
+
+```{r unif,echo=FALSE}
+par(mfrow=c(2,2))
+hist(runif(10000),main="Histogram of runif(10000)")
+plot(dunif,xlim=c(-1,1),main="dunif")
+plot(punif,xlim=c(-1,1),main="punif")
+plot(qunif,xlim=c(0,1),main="qunif")
+```
+
+### Normal distribution
+
+Maybe the most commonly seen random distribution in real world is the normal distribution. The way to draw normally distributed samples is almost the same with sampling from a uniform distribution. The names of the functions follow the same rules so that we don't have to remember too much.
+
+For example, generate a sample of size 10 from standard normal distribution, that is, with zero mean and unit variance.
+
+```{r}
+rnorm(10)
+```
+
+To draw sample from non-standard distribution, we only have to specify the two parameters `mean=` for mean and `sd=` for standard deviation.
+
+```{r}
+rnorm(10,mean = 10,sd = 5)
+```
+
+In addition to the random number generator for normal distribution, R also provides with its probability density function `dnorm()`, cumulative density function `pnorm()`, and quantile function `qnorm()`.
+
+```{r norm,echo=FALSE}
+par(mfrow=c(2,2))
+hist(rnorm(10000),main="Histogram of rnorm(10000)")
+plot(dnorm,xlim=c(-5,5),main="dnorm")
+plot(pnorm,xlim=c(-5,5),main="pnorm")
+plot(qnorm,xlim=c(0,1),main="qnorm")
+```
+
+Here it is obvious that R defines 4 functions for each distribution it supports. The following table covers all the distributions it supports.
+
+[table]
 
 ## Summary statistics
 
