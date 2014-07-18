@@ -259,39 +259,64 @@ summary(x)
 -2.7100 -0.9240 -0.3420 -0.0445  0.8670  2.4700 
 ```
 
-In fact, this function is a generic function that works for many types of objects and has different behavior. It is very useful in data analysis. We will cover it in detail later.
+In fact, this function is a generic function that works for many types of objects and has different behaviors. It is very useful in data analysis. We will cover it in detail later.
 
 ## Statistical tests
 
+A large part of statistics is about drawing samples from a population, and making inference of population features by inspecting these samples. To answer questions like *Is the average score of this group higher than that of the other group?* statistical tests often play important roles. 
+
+Statistical tests allow us to answer these kinds of questions in statistical sense when we only have partial information. They also tell us at the same time to what extent we should feel confident about the conclusion.
+
+A number of functions are designed to conduct one specific or a family of statistical tests.
+
+For example, suppose we have two samples of exam scores for Class A and Class B. If the assumption is considered reasonable that scores of the students in both classes follow normal distribution respectively, we can use t-test to see whether the two classes truly have a difference in average score.
 
 
 ```r
-qnorm(c(0.01,0.99))
+classA <- c(9,9,8,10,6,7,9,6,9,10,10,8,7,8)
+classB <- c(10,7,7,9,8,10,8,9,9,8,7,10,9,9,8,7)
+t.test(classA,classB)
 ```
 
 ```
-[1] -2.326  2.326
+
+	Welch Two Sample t-test
+
+data:  classA and classB
+t = -0.3302, df = 24.71, p-value = 0.744
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ -1.0991  0.7955
+sample estimates:
+mean of x mean of y 
+    8.286     8.438 
 ```
+
+The t-test suggests that we cannot reject the null hypothesis that the true difference between the two groups equal to 0 with quite a big confidence. It does not say that the true difference equals zero but that there's no much evidence to support a significant non-zero difference.
+
+Suppose we get more observations of scores for each class and we redo the t-test,
+
 
 ```r
-table(sample(letters[1:3],100,T))
+classA <- c(9,9,8,10,6,7,9,6,9,10,10,8,7,8,10,10,9,9,10,8,10)
+classB <- c(10,7,7,9,8,10,8,9,9,8,7,10,9,9,8,7,6,7,6,6,9,6,5,7,6)
+t.test(classA,classB)
 ```
 
 ```
 
- a  b  c 
-40 25 35 
+	Welch Two Sample t-test
+
+data:  classA and classB
+t = 2.312, df = 43.75, p-value = 0.02553
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ 0.1214 1.7719
+sample estimates:
+mean of x mean of y 
+    8.667     7.720 
 ```
 
-```r
-table(sample(letters[1:3],100,T),sample(LETTERS[1:4],100,T))
-```
+we find that the $t$-statistic gets much larger and $p$-value much smaller, which is a strong sign of significant difference between the average scores of the two classes. This time, we have much more confidence to reject the null hypothesis and claim that the two classes probably have different average scores.
 
-```
-   
-     A  B  C  D
-  a  7  6 11  7
-  b  7 13 10  4
-  c  4 15 12  4
-```
-
+This is merely an example of location difference test carried out in a very rough way. R provides much wider range of statisitcal tests than this. We will cover them in later chapters.
