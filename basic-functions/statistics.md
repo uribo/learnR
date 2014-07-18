@@ -115,8 +115,6 @@ Here it is obvious that R defines 4 functions for each distribution it supports.
 
 The following list contains all built-in distributions and their corresponding random number generating function. 
 
-
-
 | Distribution | Random number generator |
 |:------------:|-------------------------|
 | [Beta distribution](//en.wikipedia.org/wiki/Beta_distribution) | `rbeta(n = , shape1 = , shape2 = , ncp = 0)` |
@@ -130,7 +128,7 @@ The following list contains all built-in distributions and their corresponding r
 | [Hypergeometric distribution](//en.wikipedia.org/wiki/Hypergeometric_distribution) | `rhyper(nn = , m = , n = , k = )` |
 | [Log-normal distribution](//en.wikipedia.org/wiki/Log-normal_distribution) | `rlnorm(n = , meanlog = 0, sdlog = 1)` |
 | [Multinomial distribution](//en.wikipedia.org/wiki/Multinomial_distribution) | `rmultinom(n = , size = , prob = )` |
-| [negative binomial distribution](//en.wikipedia.org/wiki/Negative_binomial_distribution) | `rnbinom(n = , size = , prob = , mu = )` |
+| [Negative binomial distribution](//en.wikipedia.org/wiki/Negative_binomial_distribution) | `rnbinom(n = , size = , prob = , mu = )` |
 | [Normal distribution](//en.wikipedia.org/wiki/Normal_distribution) | `rnorm(n = , mean = 0, sd = 1)` |
 | [Poisson distribution](//en.wikipedia.org/wiki/Poisson_distribution) | `rpois(n = , lambda = )` |
 | [Student's $t$ distribution](//en.wikipedia.org/wiki/Student's_t-distribution) | `rt(n = , df = , ncp = )` |
@@ -141,56 +139,97 @@ The density functions, probability functions, and quantile functions for the abo
 
 ## Summary statistics
 
+Random distributions are tools to describe the features of random variables. Summary statistics are sometimes of our central interest and informative enough for making descisions.
+
+A few functions calculate specific summary statistics for a given sample. The following table summarizes these functions.
+
+| Statistic | Function |
+|:---------:|----------|
+| Mean | `mean(x = , ... = )`|
+| Standard deviation | `sd(x = , na.rm = FALSE)` |
+| Variance | `var(x = , y = NULL, na.rm = FALSE, use = )` |
+| Corvariance | `cov(x = , y = NULL, use = "everything", method = c("pearson", ,     "kendall", "spearman"))` |
+| Correlation | `cor(x = , y = NULL, use = "everything", method = c("pearson", ,     "kendall", "spearman"))` |
+| Median | `median(x = , na.rm = FALSE)` |
+| Quantile | `quantile(x = , ... = )` |
+| Maximum | `max()` |
+| Minimum | `min()` |
+| Range | `range()` |
+
+The following examples show how these functions can be used. First we generate a random numeric vector of length 30 from standard normal distribution.
+
 
 ```r
-x.norm <- rnorm(20)
-mean(x.norm)
+x <- rnorm(30)
+x
 ```
 
 ```
-[1] 0.01595
+ [1] -0.90035 -0.45992  2.46985  0.07654  1.58312 -0.06609 -1.65127
+ [8]  1.55846  0.88591  1.70314  1.93926 -0.63346 -0.63624 -1.47025
+[15]  0.52224  0.81135 -0.93123 -0.96535 -0.80880 -2.70800 -0.55795
+[22]  1.94983 -0.22326  1.60173 -1.25742 -2.05239  0.13731  0.79805
+[29] -0.59606 -1.45335
+```
+
+To see the summary statistics for such a sample, we can call the functions in the table. We can calculate its mean, standard deviation, and median.
+
+
+```r
+c(mean=mean(x),sd=sd(x),median=median(x))
+```
+
+```
+    mean       sd   median 
+-0.04449  1.33276 -0.34159 
+```
+
+We can compute its quantiles. `quantile()` by default calculates the 0%, 25%, 50%, 75%, and 100% quantiles.
+
+
+```r
+quantile(x)
+```
+
+```
+     0%     25%     50%     75%    100% 
+-2.7080 -0.9235 -0.3416  0.8673  2.4699 
+```
+
+To customize the quantiles, specify `probs=` argument.
+
+
+```r
+quantile(x,probs = c(0.5,0.8))
+```
+
+```
+    50%     80% 
+-0.3416  1.5634 
+```
+
+We can call `min()` and `max()` to see its smallest and largest values, respectively. `range()` returns both of them together in a numeric vector.
+
+
+```r
+c(min=min(x),max=max(x))
+```
+
+```
+   min    max 
+-2.708  2.470 
 ```
 
 ```r
-sd(x.norm)
+range(x)
 ```
 
 ```
-[1] 1.375
+[1] -2.708  2.470
 ```
 
-```r
-median(x.norm)
-```
+In addition, `pmin()` and `pmax()` are used to work element-wisely for all vectors.
 
-```
-[1] -0.263
-```
-
-```r
-quantile(x.norm,probs = c(0.5,0.8))
-```
-
-```
-   50%    80% 
--0.263  1.563 
-```
-
-```r
-max(x.norm)
-```
-
-```
-[1] 2.47
-```
-
-```r
-min(x.norm)
-```
-
-```
-[1] -2.708
-```
 
 ```r
 pmax(c(1,2,3),c(2,3,1))
@@ -208,15 +247,19 @@ pmin(c(1,2,3),c(2,3,1),c(3,2,1))
 [1] 1 2 1
 ```
 
+Also a function named `summary()` can be used to directly show all important location summary statistics.
+
+
 ```r
-summary(x.norm)
+summary(x)
 ```
 
 ```
    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
--2.7100 -0.9080 -0.2630  0.0159  1.0500  2.4700 
+-2.7100 -0.9240 -0.3420 -0.0445  0.8670  2.4700 
 ```
 
+In fact, this function is a generic function that works for many types of objects and has different behavior. It is very useful in data analysis. We will cover it in detail later.
 
 ## Statistical tests
 
@@ -237,7 +280,7 @@ table(sample(letters[1:3],100,T))
 ```
 
  a  b  c 
-42 22 36 
+40 25 35 
 ```
 
 ```r
@@ -247,8 +290,8 @@ table(sample(letters[1:3],100,T),sample(LETTERS[1:4],100,T))
 ```
    
      A  B  C  D
-  a  7  7 13  4
-  b  7 15  8  5
-  c  4 14 11  5
+  a  7  6 11  7
+  b  7 13 10  4
+  c  4 15 12  4
 ```
 
