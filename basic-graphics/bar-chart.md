@@ -1,5 +1,0 @@
-
-
-# Bar chart
-
-example

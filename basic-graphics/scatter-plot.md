@@ -1,5 +1,0 @@
-
-
-# Scatter plot
-
-example

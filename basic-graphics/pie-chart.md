@@ -1,5 +1,0 @@
-
-
-# Pie chart
-
-example

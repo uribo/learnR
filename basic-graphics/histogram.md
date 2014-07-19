@@ -1,5 +1,0 @@
-
-
-# Histogram
-
-example

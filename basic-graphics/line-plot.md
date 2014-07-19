@@ -1,5 +1,0 @@
-
-
-# Line plot
-
-example
