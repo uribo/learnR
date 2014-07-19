@@ -33,7 +33,7 @@ The `lapply` version is much simpler: it applies `rnorm()` on each element in `l
 
 From the example above, we should realize that it is only possible if R allows us to pass functions as ordinary objects. Fortunately, it is true: Functions in R are treated just like objects and can be passed around as arguments. This feature largely boosts the flexibility of coding.
 
-All apply-family functions are so-called *higher-order function* that accept functions as an argument. We will cover the this concept later.
+Each apply-family function is a so-called *higher-order function* that accepts function as an argument. We will cover the this concept in detail later.
 
 ## lapply
 
