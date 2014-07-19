@@ -205,3 +205,67 @@ if(TRUE) c(1,2) else c(2,3)
 
 ## switch
 
+In contrast with `if` which deals with `TRUE` and `FALSE` conditions, `switch` works with a number or a character string and choose a branch to return according to the input.
+
+Suppose the input is an integer `n`. `switch` works in a way that returns the value of the `n`-th arguments in `...` following the first argument.
+
+
+```r
+switch(1,"x","y")
+```
+
+```
+[1] "x"
+```
+
+```r
+switch(2,"x","y")
+```
+
+```
+[1] "y"
+```
+
+If the input integer is out of bound and thus does not match anything, an invisible `NULL` will be returned.
+
+
+```r
+switch(3,"x","y")
+```
+
+`switch` has a different behavior when working with character input. It returns the value of the first argument that matches its name with the input.
+
+
+```r
+switch("a",a=1,b=2)
+```
+
+```
+[1] 1
+```
+
+```r
+switch("b",a=1,b=2)
+```
+
+```
+[1] 2
+```
+
+For the first `switch`, `a=1` matches `a`. For the second, `b=2` matches `b`. If no argument matches the input, an invisible `NULL` value will be returned.
+
+
+```r
+switch("c",a=1,b=2)
+```
+
+To manage all possibilities, we can add a last term that captures all other inputs.
+
+
+```r
+switch("c",a=1,b=2,3)
+```
+
+```
+[1] 3
+```
