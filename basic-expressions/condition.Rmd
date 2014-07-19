@@ -135,3 +135,6 @@ We can always rewrite the function to its equivalent `if` expression which is ab
 ```{r}
 if(TRUE) c(1,2) else c(2,3)
 ```
+
+## switch
+
