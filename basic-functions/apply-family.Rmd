@@ -127,6 +127,9 @@ Map(function(xi,yi) c(xi,yi,xi+yi), df$x, df$y)
 
 ```
 
+## tapply
+
+`tapply`
 
 ## apply
 
