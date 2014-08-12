@@ -2,4 +2,4 @@
 
 # Anonymous functions
 
-example
+

@@ -15,7 +15,7 @@ R and most of the packages are fully open-source. Thousands of users and develop
 
 #### It's popular
 
-R is very popular, if not the most, statistical programming language and platform to perform data mining, analysis, and visualization. High popularity often means easier communication between you and other users because you "speak"" the same language.
+R is very popular, if not the most, statistical programming language and platform to perform data mining, analysis, and visualization. High popularity often means easier communication between you and other users because you "speak" the same language.
 
 #### It's flexible
 
