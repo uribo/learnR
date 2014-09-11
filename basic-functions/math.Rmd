@@ -14,31 +14,31 @@ Mathematical functions are essential in all computing environments. R also provi
 
 | Symbol | Call | Value |
 |--------|------|-------|
-| $\sin(x)$ | `sin(1)` | `r sin(1)` |
-| $\cos(x)$ | `cos(1)` | `r cos(1)` |
-| $\tan(x)$ | `tan(1)` | `r tan(1)` |
-| $\arcsin(x)$ | `asin(1)` | `r asin(1)` |
-| $\arccos(x)$ | `acos(1)` | `r acos(1)` |
-| $\arctan(x)$ | `atan(1)` | `r atan(1)` |
+| $$\sin(x)$$ | `sin(1)` | `r sin(1)` |
+| $$\cos(x)$$ | `cos(1)` | `r cos(1)` |
+| $$\tan(x)$$ | `tan(1)` | `r tan(1)` |
+| $$\arcsin(x)$$ | `asin(1)` | `r asin(1)` |
+| $$\arccos(x)$$ | `acos(1)` | `r acos(1)` |
+| $$\arctan(x)$$ | `atan(1)` | `r atan(1)` |
 
 ## Hyperbolic functions
 
 | Symbol | Call | Value |
 |--------|------|-------|
-| $\sinh(x)$ | `sinh(1)` | `r sinh(1)` |
-| $\cosh(x)$ | `cosh(1)` | `r cosh(1)` |
-| $\tanh(x)$ | `tanh(1)` | `r tanh(1)` |
-| $\mbox{arcsinh}(x)$ | `asinh(1)` | `r asinh(1)` |
-| $\mbox{arccosh}(x)$ | `acosh(1)` | `r acosh(1)` |
-| $\mbox{arctanh}(x)$ | `atanh(1)` | `r atanh(1)` |
+| $$\sinh(x)$$ | `sinh(1)` | `r sinh(1)` |
+| $$\cosh(x)$$ | `cosh(1)` | `r cosh(1)` |
+| $$\tanh(x)$$ | `tanh(1)` | `r tanh(1)` |
+| $$\mbox{arcsinh}(x)$$ | `asinh(1)` | `r asinh(1)` |
+| $$\mbox{arccosh}(x)$$ | `acosh(1)` | `r acosh(1)` |
+| $$\mbox{arctanh}(x)$$ | `atanh(1)` | `r atanh(1)` |
 
 ## Number functions
 
 | Symbol | Call | Value |
 |--------|------|-------|
-| $x!$ | `factorial(5)` | `r factorial(5)`|
-| $\lceil x\rceil$ | `ceiling(10.6)` | `r ceiling(10.6)` |
-| $\lfloor x\rfloor$ | `floor(9.5)` | `r floor(9.5)` |
+| $$x!$$ | `factorial(5)` | `r factorial(5)`|
+| $$\lceil x\rceil$$ | `ceiling(10.6)` | `r ceiling(10.6)` |
+| $$\lfloor x\rfloor$$ | `floor(9.5)` | `r floor(9.5)` |
 | truncate | `trunc(1.5)` | `r trunc(1.5)` |
 | round | `round(pi,3)` | `r round(pi,3)` |
 | significant numbers | `signif(pi,3)` | `r signif(pi,3)` |
@@ -47,15 +47,17 @@ Mathematical functions are essential in all computing environments. R also provi
 
 | Symbol | Call | Value |
 |--------|------|-------|
-| $\max(\ldots)$ | `max(1,2,3)` | `r max(1,2,3)` |
-| $\min(\ldots)$ | `min(1,2,3)` | `r min(1,2,3)` |
+| $$\max(\ldots)$$ | `max(1,2,3)` | `r max(1,2,3)` |
+| $$\min(\ldots)$$ | `min(1,2,3)` | `r min(1,2,3)` |
 
 ## Root finding
 
 `polyroot()` can find complex roots of a polynomial equation in the form of 
+
 $$ p(x) = z_1 + z_2 x + \ldots + z_n x^{n-1}.$$
 
 For example, find roots of the following equation:
+
 $$ 1 + 2 x + x^2 - x^3 = 0 $$
 
 ```{r}
@@ -64,9 +66,11 @@ polyroot(c(1,2,1,-1))
 
 Note that all complex roots are found.
 
-As for general numeric root finding in the form $f(x)=0$, `uniroot()` function can be used to numerically find a root of that equation.
+As for general numeric root finding in the form $$f(x)=0$$, `uniroot()` function can be used to numerically find a root of that equation.
 
-For example, find a root of the equation $$x^3 - x + \cos(x) = 0$$ within the range $x\in[-5,5]$.
+For example, find a root of the equation 
+$$x^3 - x + \cos(x) = 0$$ 
+within the range $$x\in[-5,5]$$.
 
 ```{r}
 uniroot(function(x) x^3-x+cos(x),c(-5,5))
@@ -82,13 +86,13 @@ It is very handy to perform basic calculus.
 
 `D()` computes the derivative of a function symbolically with respect to given variables. 
 
-For example, derive $\mbox{d}x^{2}/\mbox{d}x$.
+For example, derive $$\mbox{d}x^{2}/\mbox{d}x$$.
 
 ```{r}
 D(expression(x^2),"x")
 ```
 
-Derive $\mbox{d}\sin(x)\cos(xy)/\mbox{d}x$.
+Derive $$\mbox{d}\sin(x)\cos(xy)/\mbox{d}x$$.
 
 ```{r}
 D(expression(sin(x)*cos(x*y)),"x")
@@ -105,7 +109,9 @@ eval(z,list(x=1,y=2))
 
 ### Integration
 
-R also supports numeric integration. Here we do not have to write the expression but provide a function since it is not symbolic computation. For example, the following code calculates $$\int_{0}^{\frac{\pi}{2}}\sin(x)\,\mbox{d}x.$$
+R also supports numeric integration. Here we do not have to write the expression but provide a function since it is not symbolic computation. For example, the following code calculates 
+
+$$\int_{0}^{\frac{\pi}{2}}\sin(x)\,\mbox{d}x.$$
 
 ```{r}
 integrate(function(x) sin(x),0,pi/2)

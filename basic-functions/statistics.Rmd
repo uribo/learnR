@@ -48,13 +48,13 @@ Uniform distribution is the simplest random distribution. Under uniform distribu
 runif(10)
 ```
 
-A random sample of size 10, represented by a numeric vector, is drawn from the uniform distribution with range $[0,1]$. To customize the range, we can specify `min=` and `max=` arguments 
+A random sample of size 10, represented by a numeric vector, is drawn from the uniform distribution with range $$[0,1]$$. To customize the range, we can specify `min=` and `max=` arguments 
 
 ```{r}
 runif(10,min = -5,max = 5)
 ```
 
-so that another sample uniformly distributed within $[-5,5]$ is drawn.
+so that another sample uniformly distributed within $$[-5,5]$$ is drawn.
 
 In addition to a simple random number generator, some relavent functions are also provided, including the probability density function `dunif()`, the cumulative density function `punif()`, and quantile function `qunif()`.
 
@@ -114,7 +114,7 @@ The following list contains all built-in distributions and their corresponding r
 | [Negative binomial distribution](//en.wikipedia.org/wiki/Negative_binomial_distribution) | ``r funcall(rnbinom)`` |
 | [Normal distribution](//en.wikipedia.org/wiki/Normal_distribution) | ``r funcall(rnorm)`` |
 | [Poisson distribution](//en.wikipedia.org/wiki/Poisson_distribution) | ``r funcall(rpois)`` |
-| [Student's $t$ distribution](//en.wikipedia.org/wiki/Student's_t-distribution) | ``r funcall(rt)`` |
+| [Student's $$t$$ distribution](//en.wikipedia.org/wiki/Student's_t-distribution) | ``r funcall(rt)`` |
 | [Uniform distribution](//en.wikipedia.org/wiki/Uniform_distribution_%28continuous%29) | ``r funcall(runif)`` |
 | [Weibull distribution](//en.wikipedia.org/wiki/Weibull_distribution) | ``r funcall(rweibull)`` |
 
@@ -212,6 +212,6 @@ classB <- c(10,7,7,9,8,10,8,9,9,8,7,10,9,9,8,7,6,7,6,6,9,6,5,7,6)
 t.test(classA,classB)
 ```
 
-we find that the $t$-statistic gets much larger and $p$-value much smaller, which is a strong sign of significant difference between the average scores of the two classes. This time, we have much more confidence to reject the null hypothesis and claim that the two classes probably have different average scores.
+we find that the $$t$$-statistic gets much larger and $$p$$-value much smaller, which is a strong sign of significant difference between the average scores of the two classes. This time, we have much more confidence to reject the null hypothesis and claim that the two classes probably have different average scores.
 
 This is merely an example of location difference test carried out in a very rough way. R provides much wider range of statisitcal tests than this. We will cover them in later chapters.

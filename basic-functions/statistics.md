@@ -57,10 +57,11 @@ runif(10)
 ```
 
 ```
- [1] 0.5383 0.7490 0.4201 0.1714 0.7703 0.8820 0.5491 0.2777 0.4883 0.9285
+ [1] 0.5383487 0.7489722 0.4201015 0.1714202 0.7703016 0.8819536 0.5490967
+ [8] 0.2777238 0.4883060 0.9285051
 ```
 
-A random sample of size 10, represented by a numeric vector, is drawn from the uniform distribution with range $[0,1]$. To customize the range, we can specify `min=` and `max=` arguments 
+A random sample of size 10, represented by a numeric vector, is drawn from the uniform distribution with range $$[0,1]$$. To customize the range, we can specify `min=` and `max=` arguments 
 
 
 ```r
@@ -68,10 +69,11 @@ runif(10,min = -5,max = 5)
 ```
 
 ```
- [1] -1.513  4.542  1.953  3.895 -3.196  1.294  4.896 -3.697 -1.693  3.651
+ [1] -1.513080  4.541577  1.952741  3.894535 -3.195928  1.293909  4.895641
+ [8] -3.697111 -1.693395  3.651205
 ```
 
-so that another sample uniformly distributed within $[-5,5]$ is drawn.
+so that another sample uniformly distributed within $$[-5,5]$$ is drawn.
 
 In addition to a simple random number generator, some relavent functions are also provided, including the probability density function `dunif()`, the cumulative density function `punif()`, and quantile function `qunif()`.
 
@@ -89,8 +91,8 @@ rnorm(10)
 ```
 
 ```
- [1]  0.99795  0.80107  0.82010 -0.09279 -0.31225  1.93903 -0.68048
- [8] -0.04908  0.12001 -1.30859
+ [1]  0.99794902  0.80106668  0.82010478 -0.09279376 -0.31225186
+ [6]  1.93903077 -0.68048408 -0.04907921  0.12000937 -1.30858879
 ```
 
 To draw sample from non-standard distribution, we only have to specify the two parameters `mean=` for mean and `sd=` for standard deviation.
@@ -101,8 +103,8 @@ rnorm(10,mean = 10,sd = 5)
 ```
 
 ```
- [1] 12.9628  4.7981  4.0237  0.8229 10.4808 10.9533 11.8074 14.6700
- [9]  5.7354  8.0848
+ [1] 12.9627751  4.7980781  4.0237080  0.8228835 10.4808267 10.9532740
+ [7] 11.8074106 14.6699850  5.7354125  8.0848444
 ```
 
 In addition to the random number generator for normal distribution, R also provides with its probability density function `dnorm()`, cumulative density function `pnorm()`, and quantile function `qnorm()`.
@@ -131,7 +133,7 @@ The following list contains all built-in distributions and their corresponding r
 | [Negative binomial distribution](//en.wikipedia.org/wiki/Negative_binomial_distribution) | `rnbinom(n = , size = , prob = , mu = )` |
 | [Normal distribution](//en.wikipedia.org/wiki/Normal_distribution) | `rnorm(n = , mean = 0, sd = 1)` |
 | [Poisson distribution](//en.wikipedia.org/wiki/Poisson_distribution) | `rpois(n = , lambda = )` |
-| [Student's $t$ distribution](//en.wikipedia.org/wiki/Student's_t-distribution) | `rt(n = , df = , ncp = )` |
+| [Student's $$t$$ distribution](//en.wikipedia.org/wiki/Student's_t-distribution) | `rt(n = , df = , ncp = )` |
 | [Uniform distribution](//en.wikipedia.org/wiki/Uniform_distribution_%28continuous%29) | `runif(n = , min = 0, max = 1)` |
 | [Weibull distribution](//en.wikipedia.org/wiki/Weibull_distribution) | `rweibull(n = , shape = , scale = 1)` |
 
@@ -165,11 +167,12 @@ x
 ```
 
 ```
- [1] -0.90035 -0.45992  2.46985  0.07654  1.58312 -0.06609 -1.65127
- [8]  1.55846  0.88591  1.70314  1.93926 -0.63346 -0.63624 -1.47025
-[15]  0.52224  0.81135 -0.93123 -0.96535 -0.80880 -2.70800 -0.55795
-[22]  1.94983 -0.22326  1.60173 -1.25742 -2.05239  0.13731  0.79805
-[29] -0.59606 -1.45335
+ [1] -0.90035066 -0.45992252  2.46985327  0.07654286  1.58312121
+ [6] -0.06608715 -1.65127263  1.55845790  0.88590800  1.70313588
+[11]  1.93925519 -0.63345737 -0.63624338 -1.47024681  0.52223872
+[16]  0.81135400 -0.93122568 -0.96534549 -0.80879575 -2.70799853
+[21] -0.55794839  1.94983117 -0.22325966  1.60173266 -1.25742475
+[26] -2.05238757  0.13731471  0.79804935 -0.59605865 -1.45335455
 ```
 
 To see the summary statistics for such a sample, we can call the functions in the table. We can calculate its mean, standard deviation, and median.
@@ -180,8 +183,8 @@ c(mean=mean(x),sd=sd(x),median=median(x))
 ```
 
 ```
-    mean       sd   median 
--0.04449  1.33276 -0.34159 
+       mean          sd      median 
+-0.04448615  1.33276476 -0.34159109 
 ```
 
 We can compute its quantiles. `quantile()` by default calculates the 0%, 25%, 50%, 75%, and 100% quantiles.
@@ -192,8 +195,8 @@ quantile(x)
 ```
 
 ```
-     0%     25%     50%     75%    100% 
--2.7080 -0.9235 -0.3416  0.8673  2.4699 
+        0%        25%        50%        75%       100% 
+-2.7079985 -0.9235069 -0.3415911  0.8672695  2.4698533 
 ```
 
 To customize the quantiles, specify `probs=` argument.
@@ -204,8 +207,8 @@ quantile(x,probs = c(0.5,0.8))
 ```
 
 ```
-    50%     80% 
--0.3416  1.5634 
+       50%        80% 
+-0.3415911  1.5633906 
 ```
 
 We can call `min()` and `max()` to see its smallest and largest values, respectively. `range()` returns both of them together in a numeric vector.
@@ -216,8 +219,8 @@ c(min=min(x),max=max(x))
 ```
 
 ```
-   min    max 
--2.708  2.470 
+      min       max 
+-2.707999  2.469853 
 ```
 
 ```r
@@ -225,7 +228,7 @@ range(x)
 ```
 
 ```
-[1] -2.708  2.470
+[1] -2.707999  2.469853
 ```
 
 In addition, `pmin()` and `pmax()` are used to work element-wisely for all vectors.
@@ -255,8 +258,8 @@ summary(x)
 ```
 
 ```
-   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
--2.7100 -0.9240 -0.3420 -0.0445  0.8670  2.4700 
+    Min.  1st Qu.   Median     Mean  3rd Qu.     Max. 
+-2.70800 -0.92350 -0.34160 -0.04449  0.86730  2.47000 
 ```
 
 In fact, this function is a generic function that works for many types of objects and has different behaviors. It is very useful in data analysis. We will cover it in detail later.
@@ -283,13 +286,13 @@ t.test(classA,classB)
 	Welch Two Sample t-test
 
 data:  classA and classB
-t = -0.3302, df = 24.71, p-value = 0.744
+t = -0.3302, df = 24.708, p-value = 0.744
 alternative hypothesis: true difference in means is not equal to 0
 95 percent confidence interval:
- -1.0991  0.7955
+ -1.0991073  0.7955359
 sample estimates:
 mean of x mean of y 
-    8.286     8.438 
+ 8.285714  8.437500 
 ```
 
 The t-test suggests that we cannot reject the null hypothesis that the true difference between the two groups equal to 0 with quite a big confidence. It does not say that the true difference equals zero but that there's no much evidence to support a significant non-zero difference.
@@ -308,15 +311,15 @@ t.test(classA,classB)
 	Welch Two Sample t-test
 
 data:  classA and classB
-t = 2.312, df = 43.75, p-value = 0.02553
+t = 2.3123, df = 43.746, p-value = 0.02553
 alternative hypothesis: true difference in means is not equal to 0
 95 percent confidence interval:
- 0.1214 1.7719
+ 0.121445 1.771888
 sample estimates:
 mean of x mean of y 
-    8.667     7.720 
+ 8.666667  7.720000 
 ```
 
-we find that the $t$-statistic gets much larger and $p$-value much smaller, which is a strong sign of significant difference between the average scores of the two classes. This time, we have much more confidence to reject the null hypothesis and claim that the two classes probably have different average scores.
+we find that the $$t$$-statistic gets much larger and $$p$$-value much smaller, which is a strong sign of significant difference between the average scores of the two classes. This time, we have much more confidence to reject the null hypothesis and claim that the two classes probably have different average scores.
 
 This is merely an example of location difference test carried out in a very rough way. R provides much wider range of statisitcal tests than this. We will cover them in later chapters.
