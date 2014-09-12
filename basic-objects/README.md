@@ -1,6 +1,10 @@
 # Basic objects
 
-In R, everything we can play with is an **object**, and everything we do is a **function**.
+In R,
+
+> Everything that exists is an object.
+> Everything that happens is a function.
+> -- John Chambers
 
 For example, when we do statistics, we often feed a table of data to a linear regression equation and obtain a group of linear coefficients. 
 
