@@ -23,7 +23,7 @@ In this book, we will use RStudio to handle almost all the work in R. This integ
 
 #### Community
 
-R, as a community, is strong and active. You can visit [Try R](http://tryr.codeschool.com/) and begin learning via this interactive tutorial. When you are coding, you probably won't solve every problem. Then you may Google your question any find that it almost always got answers in [StackOverflow](http://stackoverflow.com/questions/tagged/r). If your question is not fully addressed, you can ask it and probably get answered in a couple of minutes.
+R, as a community, is strong and active. You can visit [Try R](http://tryr.codeschool.com/) and begin learning via this interactive tutorial. When you are coding, you probably won't solve every problem. Then you may Google your question and find that it almost always got answers in [StackOverflow](http://stackoverflow.com/questions/tagged/r). If your question is not fully addressed, you can ask it and probably get answered in a couple of minutes.
 
 If you need to use a package but also want to see how it works, to report what might not work correctly, or to improve it, you can visit the source code at its online repository (or *repos*). Many repos are hosted by [GitHub](http://www.github.com).
 
