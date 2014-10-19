@@ -8,7 +8,7 @@ In R,
 
 For example, when we do statistics, we often feed a table of data to a linear regression equation and obtain a group of linear coefficients. 
 
-What basically happens in R when we practice this procedure is that a we provide an *object* called **data frame** that holds the table of data, carry it to the linear model *function* and get another *object* called **list** consisting of the properties of the regression results, and extract yet another *object* called **numeric vector** from the **list** to represent the linear coefficients.
+What basically happens in R when we practice this procedure is that we provide an *object* called **data frame** that holds the table of data, carry it to the linear model *function* and get another *object* called **list** consisting of the properties of the regression results, and extract yet another *object* called **numeric vector** from the **list** to represent the linear coefficients.
 
 Any procedure may involve various different types of objects. That is exactly the same when we do things in real world. 
 
