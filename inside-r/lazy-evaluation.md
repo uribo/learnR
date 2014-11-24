@@ -2,7 +2,7 @@
 
 # Lazy evaluation
 
-R adopts a mechanism called lazy evaluation. The following example shows how expressions are laziy evaluated.
+R adopts a mechanism called lazy evaluation. The following example shows how expressions are lazily evaluated.
 
 Suppose we define such a function.
 
