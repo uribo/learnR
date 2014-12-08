@@ -1,5 +1,6 @@
 # Summary
 
+* [Acknowledgment](acknowledgment.md)
 * [Quick start](quick-start/README.md)
     * [What is R](quick-start/what-is-r.md)
     * [Why R](quick-start/why-r.md)
