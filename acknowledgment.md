@@ -4,8 +4,8 @@
 
 This book is a collaborative work. I should give my thanks to the following contributors:
 
-* Shaoqing Kang
-* Thomas Klebel
+* [Shaoqing Kang](https://github.com/ksq)
+* [Thomas Klebel](https://github.com/tklebel)
 
 ## Contribute to this book
 
