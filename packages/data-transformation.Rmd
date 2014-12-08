@@ -6,6 +6,12 @@ opts_chunk$set(prompt=TRUE, comment='', results='markup')
 
 ```
 
-# reshape2
+# Data transformation
 
-example
+## reshape2
+
+## plyr
+
+## dplyr
+
+## rlist

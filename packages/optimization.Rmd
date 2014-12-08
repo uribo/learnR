@@ -6,6 +6,6 @@ opts_chunk$set(prompt=TRUE, comment='', results='markup')
 
 ```
 
-# Rsolnp
+# Optimization
 
-example
+## `Rsolnp` package

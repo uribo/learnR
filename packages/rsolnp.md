@@ -1,5 +1,0 @@
-
-
-# Rsolnp
-
-example

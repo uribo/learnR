@@ -6,6 +6,6 @@ opts_chunk$set(prompt=TRUE, comment='', results='markup')
 
 ```
 
-# data.table
+# Data table
 
-data.table
+## `data.table` package

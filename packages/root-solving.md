@@ -1,0 +1,5 @@
+
+
+# Root solving
+
+## `rootSolve` package

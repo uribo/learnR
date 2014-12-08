@@ -1,5 +1,5 @@
 
 
-# data.table
+# Data table
 
-data.table
+## `data.table` package

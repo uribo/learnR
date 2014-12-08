@@ -6,6 +6,15 @@ opts_chunk$set(prompt=TRUE, comment='', results='markup')
 
 ```
 
-# stringr
+# Web scraping
 
-example
+## Web page
+
+### HTML
+
+### CSS
+
+### XPath
+
+## `rvest` package
+

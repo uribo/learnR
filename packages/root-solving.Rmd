@@ -6,6 +6,6 @@ opts_chunk$set(prompt=TRUE, comment='', results='markup')
 
 ```
 
-# rootSolve
+# Root solving
 
-example
+## `rootSolve` package
