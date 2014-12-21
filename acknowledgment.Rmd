@@ -26,3 +26,4 @@ This book is a collaborative work. I should give my thanks to the following cont
 ## Contribute to this book
 
 The contents of this book is hosted on [GitHub](https://github.com/renkun-ken/learnR). 
+
